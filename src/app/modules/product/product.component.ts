@@ -16,6 +16,6 @@ export class ProductComponent {
   ){}
   
   ngOnInit(){
-    this.products = this.productService.getProducts();
+    this.productService.getProducts().subscribe(prod => this.products = prod);
   }
 }
