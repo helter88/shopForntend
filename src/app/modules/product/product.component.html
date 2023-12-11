@@ -20,3 +20,9 @@
     <button class="bg-red-400 hover:bg-red-700 text-white py-2 px-4 rounded-full">Add to cart </button>
   </mat-card-actions>
 </mat-card>
+<mat-paginator [length]='totalElements'
+              [pageSize]="10"
+              [pageSizeOptions]="[10, 25, 50]"
+              aria-label="Select page"
+              (page)="onPageChange($event)">
+</mat-paginator>
