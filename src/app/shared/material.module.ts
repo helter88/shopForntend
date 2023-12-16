@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 
 const materialComponents = [
   MatCardModule,
   MatIconModule,
+  MatInputModule,
   MatPaginatorModule,
-  MatTableModule
+  MatSnackBarModule,
+  MatTableModule,
 ]
 
 @NgModule({
