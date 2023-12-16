@@ -1,0 +1,25 @@
+<form class="flex flex-col" [formGroup] ="parentForm" (submit)="submit()">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="write product name" formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea matInput rows="15" placeholder="write product description" formControlName="description"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+      <mat-label>Category</mat-label>
+      <input matInput placeholder="write product category" formControlName="category">
+  </mat-form-field>
+  <mat-form-field>
+      <mat-label>Price</mat-label>
+      <input matInput placeholder="write product price" formControlName="price">
+  </mat-form-field>
+  <mat-form-field>
+      <mat-label>Currency</mat-label>
+      <input matInput placeholder="write product currency" formControlName="currency">
+  </mat-form-field>
+  <div class="self-end">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full">Save</button>
+  </div>
+</form>

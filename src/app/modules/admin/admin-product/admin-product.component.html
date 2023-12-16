@@ -1,4 +1,7 @@
-<h1>Product List</h1>
+<div class="flex flex-row gap-4">
+  <h1>Product List</h1>
+  <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full h-1/2" routerLink="/admin/products/add">Add Product</button>
+</div>
 <table mat-table [dataSource]="products" class="mat-elevation-z8">
 
     <ng-container matColumnDef="id">

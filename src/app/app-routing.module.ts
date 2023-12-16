@@ -9,6 +9,7 @@ import { LoginComponent } from './modules/login/login.component';
 import { ProductComponent } from './modules/product/product.component';
 import { AdminProductComponent } from './modules/admin/admin-product/admin-product.component';
 import { AdminProductUpdateComponent } from './modules/admin/admin-product-update/admin-product-update.component';
+import { AdminProductAddComponent } from './modules/admin/admin-product/admin-product-add/admin-product-add.component';
 
 const routes: Routes = [{
   path: '', component: DefaultComponent, children: [{
@@ -27,6 +28,8 @@ const routes: Routes = [{
     path: 'admin/products', component: AdminProductComponent
   }, {
     path: 'admin/products/update/:id', component: AdminProductUpdateComponent
+  }, {
+    path: 'admin/products/add', component: AdminProductAddComponent
   }]
 }];
 

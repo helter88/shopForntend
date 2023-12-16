@@ -40,12 +40,12 @@ export class AdminProductUpdateComponent {
       .subscribe(prod => this.mapProductForm(prod));
   }
 
-  submit() {
+  onFormSubmit(formValue: any) {
     let id = Number(this.router.snapshot.params['id']);
-    this.adminProductUpdateService.saveProduct(id, this.productForm.value)
+    this.adminProductUpdateService.updateProduct(id, formValue)
       .subscribe(prod => {
         this.mapProductForm(prod);
-        this.snackBar.open("Product saved",'', {duration: 2600});
+        this.snackBar.open("Product updated",'', {duration: 2600});
       });
   }
 
