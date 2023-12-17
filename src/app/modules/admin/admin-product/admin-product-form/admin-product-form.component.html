@@ -1,25 +1,34 @@
 <form class="flex flex-col" [formGroup] ="parentForm" (submit)="submit()">
-  <mat-form-field>
-    <mat-label>Name</mat-label>
-    <input matInput placeholder="write product name" formControlName="name">
-  </mat-form-field>
-  <mat-form-field>
-      <mat-label>Description</mat-label>
-      <textarea matInput rows="15" placeholder="write product description" formControlName="description"></textarea>
-  </mat-form-field>
-  <mat-form-field>
-      <mat-label>Category</mat-label>
-      <input matInput placeholder="write product category" formControlName="category">
-  </mat-form-field>
-  <mat-form-field>
-      <mat-label>Price</mat-label>
-      <input matInput placeholder="write product price" formControlName="price">
-  </mat-form-field>
-  <mat-form-field>
-      <mat-label>Currency</mat-label>
-      <input matInput placeholder="write product currency" formControlName="currency">
-  </mat-form-field>
-  <div class="self-end">
-      <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full">Save</button>
-  </div>
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="write product name" formControlName="name">
+        <mat-error *ngIf="parentForm.get('name')?.errors?.['required']">Name is required</mat-error>
+        <mat-error *ngIf="parentForm.get('name')?.errors?.['minlength']">Name has to be at least 2 characters long</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput rows="15" placeholder="write product description" formControlName="description"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Category</mat-label>
+        <input matInput placeholder="write product category" formControlName="category">
+        <mat-error *ngIf="parentForm.get('category')?.errors?.['required']">Category is required</mat-error>
+        <mat-error *ngIf="parentForm.get('category')?.errors?.['minlength']">Category has to be at least 2 characters long</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input matInput placeholder="write product price" formControlName="price">
+        <mat-error *ngIf="parentForm.get('price')?.errors?.['required']">Price is required</mat-error>
+        <mat-error *ngIf="parentForm.get('price')?.errors?.['min']">Price has to be above 0</mat-error>
+        <mat-error *ngIf="parentForm.get('price')?.errors?.['pattern']">Price has to be an number</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Currency</mat-label>
+        <input matInput placeholder="write product currency" formControlName="currency">
+        <mat-error *ngIf="parentForm.get('currency')?.errors?.['required']">Currency is required</mat-error>
+    </mat-form-field>
+    <div class="self-end">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full disabled:bg-slate-200 disabled:text-slate-500 disabled:cursor-not-allowed" 
+        [disabled]="!parentForm.valid">Save</button>
+    </div>
 </form>

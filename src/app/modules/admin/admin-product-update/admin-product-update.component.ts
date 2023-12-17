@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AdminProductUpdate } from './admin-product-update.model';
 import { AdminProductUpdateService } from './admin-product-update.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -26,11 +26,11 @@ export class AdminProductUpdateComponent {
   ngOnInit(){
     this.getProducts();
     this.productForm = this.formBuilder.group({
-      name: [''],
+      name: ['', [Validators.required, Validators.minLength(2)]],
       description: [''],
-      category: [''],
-      price: [''],
-      currency: ['PLN'],
+      category: ['', [Validators.required, Validators.minLength(2)]],
+      price: [0, [Validators.required, Validators.min(0.1), Validators.pattern("^[0-9]*$")]],
+      currency: ['PLN', Validators.required],
     })
   }
 

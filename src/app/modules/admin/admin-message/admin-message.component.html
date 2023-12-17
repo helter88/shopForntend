@@ -1,0 +1,6 @@
+<div *ngIf="messages.length > 0" class="flex flex-row justify-between">
+    <div>
+       <div *ngFor="let message of messages" class="text-rose-500">{{message}}</div> 
+    </div>
+    <button class="bg-rose-500 hover:bg-rose-700 text-white  py-2 px-4 rounded-full h-1/2" (click)="closeMessages()">Clear messages</button>
+</div>
