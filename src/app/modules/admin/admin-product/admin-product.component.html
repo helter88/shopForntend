@@ -24,7 +24,9 @@
       <td mat-cell *matCellDef="let element">
         <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full"
           [routerLink]="['/admin/products/update', element.id]">EDIT</button>
-      </td>
+        <button class="bg-rose-500 hover:bg-rose-700 text-white  py-2 px-4 rounded-full ml-2"
+          (click)="confirmDelete(element.id)">DELETE</button>
+      </td> 
     </ng-container>
     
     

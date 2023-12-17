@@ -3,6 +3,7 @@ import { AdminProduct } from '../admin.model';
 import { AdminProductService } from './admin-product.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { map, startWith, switchMap } from 'rxjs';
+import { AdminConfirmationDialogService } from '../admin-confirmation-dialog.service';
 
 @Component({
   selector: 'app-admin-product',
@@ -18,7 +19,8 @@ export class AdminProductComponent implements AfterViewInit {
   products: AdminProduct[] = []
 
   constructor(
-    private adminProductService: AdminProductService
+    private adminProductService: AdminProductService,
+    private adminConfirmationDialogService: AdminConfirmationDialogService
   ){}
 
   ngAfterViewInit(): void {
@@ -32,5 +34,18 @@ export class AdminProductComponent implements AfterViewInit {
         return page.content
       })
     ).subscribe(products => this.products = products);
+  }
+
+  confirmDelete(id: number){
+    this.adminConfirmationDialogService.openConfirmationDialog()
+      .afterClosed()
+      .subscribe(res =>{
+        if(res){
+          this.adminProductService.deleteProduct(id)
+          .subscribe(() => {
+            this.products =this.products.filter(prod => prod.id !== id);
+          })
+        }
+      })
   }
 }
