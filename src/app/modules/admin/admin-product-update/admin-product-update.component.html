@@ -1,3 +1,8 @@
 <h1>Update Product</h1>
 <app-admin-product-form [parentForm]= "productForm" (formSubmit)="onFormSubmit($event)"></app-admin-product-form>
+<img *ngIf="image" src="{{'api/data/productImages/' + image}}" width="200">
+<form [formGroup]="imageGroup" (submit)="uploadFile()">
+    <input type="file" [accept]="reqiredFileTypes" (change)="onFileChange($event)">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full">Upload</button>
+</form>
 
