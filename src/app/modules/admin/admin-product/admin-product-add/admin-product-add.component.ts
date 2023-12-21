@@ -31,6 +31,7 @@ export class AdminProductAddComponent {
       category: ['',[Validators.required, Validators.minLength(2)]],
       price: [0, [Validators.required, Validators.min(0), Validators.pattern("^[0-9]*$")]],
       currency: ['PLN', Validators.required],
+      slug: ['', [Validators.required, Validators.minLength(2)]],
     })
   }
 
@@ -43,15 +44,5 @@ export class AdminProductAddComponent {
         },
         error: err => this.adminMessageService.addSpringErrors(err.error)
       });
-  }
-
-  private mapProductForm(prod: AdminProductUpdate): void {
-    return this.productForm.setValue({
-      name: prod?.name,
-      description: prod?.description,
-      category: prod?.category,
-      price: prod?.price,
-      currency: prod?.currency,
-    });
   }
 }

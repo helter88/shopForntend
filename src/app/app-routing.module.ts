@@ -10,12 +10,15 @@ import { ProductComponent } from './modules/product/product.component';
 import { AdminProductComponent } from './modules/admin/admin-product/admin-product.component';
 import { AdminProductUpdateComponent } from './modules/admin/admin-product-update/admin-product-update.component';
 import { AdminProductAddComponent } from './modules/admin/admin-product/admin-product-add/admin-product-add.component';
+import { ProductDetailsComponent } from './modules/product-details/product-details.component';
 
 const routes: Routes = [{
   path: '', component: DefaultComponent, children: [{
     path: '', component: HomeComponent
   }, {
     path: 'products', component: ProductComponent
+  }, {
+    path: 'products/:slug', component: ProductDetailsComponent
   }]
 }, {
   path: '', component: FullpageComponent, children: [{

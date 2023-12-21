@@ -3,11 +3,15 @@
   <div class="flex flex-row">
     <div class="flex-1">
       <mat-card-header>
-      <mat-card-title>{{prod.name}}</mat-card-title>
+      <mat-card-title><a class="hover:opacity-70" routerLink="{{prod.slug}}">{{prod.name}}</a></mat-card-title>
       <mat-card-subtitle>{{prod.category}}</mat-card-subtitle>
       </mat-card-header>
       <div class="flex flow-row pl-4">
-        <img src="/assets/image-placeholder.png" mat-card-lg-image>
+        <a routerLink="{{prod.slug}}">
+          <img *ngIf="!prod.image" src="/assets/image-placeholder.png" mat-card-lg-image>
+          <img *ngIf="prod.image" src="{{'/api/data/productImages/' + prod.image}}" mat-card-lg-image>
+        </a>
+        
         <mat-card-content>{{prod.description}}</mat-card-content>
       </div>
     </div>
@@ -16,7 +20,8 @@
     </div>
   </div>
   <mat-card-actions class="gap-4 m-4 justify-end">
-    <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full">Show</button>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full"
+      routerLink="{{ prod.slug}}">Show</button>
     <button class="bg-red-400 hover:bg-red-700 text-white py-2 px-4 rounded-full">Add to cart </button>
   </mat-card-actions>
 </mat-card>

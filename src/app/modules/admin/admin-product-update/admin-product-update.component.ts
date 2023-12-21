@@ -37,6 +37,7 @@ export class AdminProductUpdateComponent {
       category: ['', [Validators.required, Validators.minLength(2)]],
       price: [0, [Validators.required, Validators.min(0.1), Validators.pattern("^[0-9]+(\\.[0-9]{1,2})?$")]],
       currency: ['PLN', Validators.required],
+      slug: ['', [Validators.required, Validators.minLength(2)]],
     })
 
     this.imageGroup = this.formBuilder.group({
@@ -83,6 +84,7 @@ export class AdminProductUpdateComponent {
       category: prod?.category,
       price: prod?.price,
       currency: prod?.currency,
+      slug: prod?.slug
     });
     this.image = prod.image;
   }

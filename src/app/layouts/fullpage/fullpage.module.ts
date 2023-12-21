@@ -4,13 +4,13 @@ import { FullpageComponent } from './fullpage.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LoginComponent } from 'src/app/modules/login/login.component';
-
-
+import { ProductDetailsComponent } from 'src/app/modules/product-details/product-details.component';
 
 @NgModule({
   declarations: [
     FullpageComponent,
-    LoginComponent
+    LoginComponent,
+    ProductDetailsComponent
   ],
   imports: [
     CommonModule,

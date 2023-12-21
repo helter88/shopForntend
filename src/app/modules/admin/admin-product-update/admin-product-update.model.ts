@@ -6,6 +6,7 @@ export interface AdminProductUpdate {
     price: number;
     currency: string;
     image: string;
+    slug: string;
 }
 
 export interface UploadResponse {
