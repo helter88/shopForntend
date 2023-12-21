@@ -8,6 +8,16 @@
       <th mat-header-cell *matHeaderCellDef> Id </th>
       <td mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
+
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef> Image </th>
+      <td mat-cell *matCellDef="let element">
+        <a [routerLink]="['/admin/products/update', element.id]">
+          <img *ngIf="!element.image" src="/assets/image-placeholder.png" class="w-10">
+          <img *ngIf="element.image" src="{{'/api/data/productImages/' + element.image}}" class="w-10">
+        </a>
+      </td>
+    </ng-container>
   
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>

@@ -74,7 +74,6 @@ export class AdminProductUpdateComponent {
         file: event.target.files[0]
       })
     }
-    
   }
 
   private mapProductForm(prod: AdminProductUpdate): void {

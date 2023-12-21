@@ -14,7 +14,7 @@ export class AdminProductComponent implements AfterViewInit {
   // dataSource: AdminProduct[] = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator
 
-  displayedColumns: string[] = ["id", "name", "price", "actions"];
+  displayedColumns: string[] = ["id", "image", "name", "price", "actions"];
   totalElements: number = 0;
   products: AdminProduct[] = []
 
