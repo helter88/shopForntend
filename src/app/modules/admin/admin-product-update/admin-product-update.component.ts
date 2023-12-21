@@ -68,9 +68,12 @@ export class AdminProductUpdateComponent {
   }
 
   onFileChange(event: any){
-    this.imageGroup.patchValue({
+    if (event.target.value.length >0){
+      this.imageGroup.patchValue({
         file: event.target.files[0]
       })
+    }
+    
   }
 
   private mapProductForm(prod: AdminProductUpdate): void {
