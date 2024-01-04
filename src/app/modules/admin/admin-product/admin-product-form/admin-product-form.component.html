@@ -11,16 +11,15 @@
         <mat-error *ngIf="parentForm.get('slug')?.errors?.['required']">Custom url is required</mat-error>
         <mat-error *ngIf="parentForm.get('slug')?.errors?.['minlength']">Custom url has to be at least 2 characters long</mat-error>
     </mat-form-field>
-    <mat-form-field>
-        <mat-label>Description</mat-label>
-        <textarea matInput rows="15" placeholder="write product description" formControlName="description"></textarea>
-    </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="fill">
         <mat-label>Category</mat-label>
-        <input matInput placeholder="write product category" formControlName="category">
-        <mat-error *ngIf="parentForm.get('category')?.errors?.['required']">Category is required</mat-error>
-        <mat-error *ngIf="parentForm.get('category')?.errors?.['minlength']">Category has to be at least 2 characters long</mat-error>
-    </mat-form-field>
+        <mat-select formControlName="categoryId">
+          <mat-option *ngFor="let category of categories" [value]="category.id">
+            {{category.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="parentForm.get('categoryId')?.errors?.['required']">Category is required</mat-error>
+      </mat-form-field>
     <mat-form-field>
         <mat-label>Price</mat-label>
         <input matInput placeholder="write product price" formControlName="price">

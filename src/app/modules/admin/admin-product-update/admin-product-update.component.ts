@@ -34,7 +34,7 @@ export class AdminProductUpdateComponent {
     this.productForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       description: [''],
-      category: ['', [Validators.required, Validators.minLength(2)]],
+      categoryId: ['', [Validators.required]],
       price: [0, [Validators.required, Validators.min(0.1), Validators.pattern("^[0-9]+(\\.[0-9]{1,2})?$")]],
       currency: ['PLN', Validators.required],
       slug: ['', [Validators.required, Validators.minLength(2)]],
@@ -80,7 +80,7 @@ export class AdminProductUpdateComponent {
     this.productForm.setValue({
       name: prod?.name,
       description: prod?.description,
-      category: prod?.category,
+      categoryId: prod.categoryId,
       price: prod?.price,
       currency: prod?.currency,
       slug: prod?.slug
