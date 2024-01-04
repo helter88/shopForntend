@@ -5,3 +5,10 @@ export interface AdminProduct{
     price: string;
     currency: string;
 }
+
+export interface AdminCategory{
+    id: number;
+    name: string;
+    description: string;
+    slug: string;
+}

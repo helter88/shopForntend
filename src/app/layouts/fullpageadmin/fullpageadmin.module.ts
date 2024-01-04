@@ -11,6 +11,10 @@ import { AdminProductAddComponent } from 'src/app/modules/admin/admin-product/ad
 import { AdminProductFormComponent } from 'src/app/modules/admin/admin-product/admin-product-form/admin-product-form.component';
 import { AdminMessageComponent } from 'src/app/modules/admin/admin-message/admin-message.component';
 import { AdminConfirmationDialogComponent } from 'src/app/modules/admin/admin-confirmation-dialog/admin-confirmation-dialog.component';
+import { AdminCategoryComponent } from 'src/app/modules/admin/admin-category/admin-category.component';
+import { AdminCategoryAddComponent } from 'src/app/modules/admin/admin-category/admin-category-add/admin-category-add.component';
+import { AdminCategoryUpdateComponent } from 'src/app/modules/admin/admin-category/admin-category-update/admin-category-update.component';
+import { AdminCategoryFormComponent } from 'src/app/modules/admin/admin-category/admin-category.form/admin-category.form.component';
 
 
 
@@ -24,6 +28,10 @@ import { AdminConfirmationDialogComponent } from 'src/app/modules/admin/admin-co
     AdminProductFormComponent,
     AdminMessageComponent,
     AdminConfirmationDialogComponent,
+    AdminCategoryComponent,
+    AdminCategoryAddComponent,
+    AdminCategoryUpdateComponent,
+    AdminCategoryFormComponent
   ],
   imports: [
     CommonModule,

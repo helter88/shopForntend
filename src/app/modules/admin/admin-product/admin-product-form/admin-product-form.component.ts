@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { AdminCategory } from './admin-forduct-form.model';
 import { FormCategoryService } from './form-category.service';
+import { AdminCategory } from '../../admin.model';
 
 @Component({
   selector: 'app-admin-product-form',
