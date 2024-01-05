@@ -5,12 +5,14 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LoginComponent } from 'src/app/modules/login/login.component';
 import { ProductDetailsComponent } from 'src/app/modules/product-details/product-details.component';
+import { CategoryComponent } from 'src/app/modules/category/category.component';
 
 @NgModule({
   declarations: [
     FullpageComponent,
     LoginComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CategoryComponent
   ],
   imports: [
     CommonModule,

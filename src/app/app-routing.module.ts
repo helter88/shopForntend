@@ -14,6 +14,7 @@ import { ProductDetailsComponent } from './modules/product-details/product-detai
 import { AdminCategoryComponent } from './modules/admin/admin-category/admin-category.component';
 import { AdminCategoryUpdateComponent } from './modules/admin/admin-category/admin-category-update/admin-category-update.component';
 import { AdminCategoryAddComponent } from './modules/admin/admin-category/admin-category-add/admin-category-add.component';
+import { CategoryComponent } from './modules/category/category.component';
 
 const routes: Routes = [{
   path: '', component: DefaultComponent, children: [{
@@ -22,6 +23,8 @@ const routes: Routes = [{
     path: 'products', component: ProductComponent
   }, {
     path: 'products/:slug', component: ProductDetailsComponent
+  }, {
+    path: 'categories/:slug', component: CategoryComponent
   }]
 }, {
   path: '', component: FullpageComponent, children: [{
