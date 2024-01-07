@@ -11,7 +11,6 @@ import { CategoryComponent } from 'src/app/modules/category/category.component';
   declarations: [
     FullpageComponent,
     LoginComponent,
-    ProductDetailsComponent,
     CategoryComponent
   ],
   imports: [

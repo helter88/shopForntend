@@ -1,17 +1,57 @@
 <div class="flex flex-col">
     <div class="flex flex-row">
         <div>
-            <img *ngIf="!product.image" src="/assets/image-placeholder.png" width="350">
-            <img *ngIf="product.image" src="{{'/api/data/productImages/' + product.image}}" width="350">
+            <img *ngIf="!product?.image" src="/assets/image-placeholder.png" width="350">
+            <img *ngIf="product?.image" src="{{'/api/data/productImages/' + product.image}}" width="350">
         </div>
         <div class="flex flex-col w-full">
-            <h1>{{product.name}}</h1>
-            <small>{{product.category}}</small>
+            <h1>{{product?.name}}</h1>
+            <small>{{product?.category}}</small>
             <div class="description">
-                {{product.description}}
+                {{product?.description}}
             </div>
-            <span class="self-end">{{product.price}}</span>
+            <span class="self-end">{{product?.price}}</span>
             <button class="bg-red-400 hover:bg-red-700 text-white py-2 px-4 rounded-full" >Add to cart</button>             
+        </div>
+    </div>
+    <div>
+        <h2>Your review</h2>
+        <form [formGroup]="reviewForm" (submit)="submit()" class="flex flex-col">
+            <mat-form-field appearance="fill">
+                <mat-label>Author</mat-label>
+                <input matInput placeholder="your name" formControlName="authorName">
+                <div *ngIf="authorName?.invalid && (authorName?.dirty || authorName?.touched)" class="errorMessage">
+                  <div *ngIf="authorName?.errors?.['required']">
+                    Name is required
+                  </div>
+                  <div *ngIf="authorName?.errors?.['minlength']">
+                    Name has to contain min 2 signs
+                  </div>
+                </div>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Your opinion</mat-label>
+                <textarea matInput rows="10" placeholder="Twoja opinia" formControlName="content"></textarea>
+                <div *ngIf="content?.invalid && (content?.dirty || content?.touched)" class="errorMessage">
+                  <div *ngIf="content?.errors?.['required']">
+                    Opinion is reqired
+                  </div>
+                  <div *ngIf="content?.errors?.['minlength']">
+                    Opinion has to contain min 4 signs
+                  </div>
+                </div>
+            </mat-form-field>
+            <div class="flex flex-col align-bottom gap-2">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full" [disabled]="!reviewForm.valid">Save</button>
+            </div>
+        </form>
+        <h2>All reviews:</h2>
+        <div>
+            <div *ngFor="let review of product?.reviews" class="bg-slate-200 p-3 mb-3">
+                <h4>Author: {{review.authorName}}</h4>
+                <p>{{review.content}}</p>
+
+            </div>
         </div>
     </div>
 </div>
