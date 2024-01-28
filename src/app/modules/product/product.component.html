@@ -22,7 +22,8 @@
   <mat-card-actions class="gap-4 m-4 justify-end">
     <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full"
       routerLink="{{ prod.slug}}">Show</button>
-    <button class="bg-red-400 hover:bg-red-700 text-white py-2 px-4 rounded-full">Add to cart </button>
+    <button class="bg-red-400 hover:bg-red-700 text-white py-2 px-4 rounded-full"
+      routerLink="/cart" [queryParams]="{productId: prod?.id}">Add to cart </button>
   </mat-card-actions>
 </mat-card>
 <mat-paginator [length]='totalElements'
