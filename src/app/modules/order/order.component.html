@@ -1,0 +1,99 @@
+<h1>Order</h1>
+
+<div *ngIf="orderSummary">
+    <div>Order number: {{orderSummary.id}}</div>
+    <div>Date: {{orderSummary.placeDate}}</div>
+    <div>Status: {{orderSummary.status}}</div>
+    <div>Value: {{orderSummary.grossValue}}</div>
+</div>
+
+<div *ngIf="!orderSummary && cartSummary && cartSummary.items.length <= 0">
+    Cart is empty so you can't order.
+</div>
+
+<div *ngIf="!orderSummary && cartSummary && cartSummary.items.length >= 0">
+    <form [formGroup]="formGroup" (submit)="submit()">
+        <div class="flex flex-col gap-2">
+            <mat-form-field appearance="fill">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="Write your First Name" formControlName="firstname">
+                <mat-error *ngIf="firstname?.errors?.['required']">
+                    Name is required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Write your Last Name" formControlName="lastname">
+                <mat-error *ngIf="lastname?.errors?.['required']">
+                    Surname is required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Street</mat-label>
+                <input matInput placeholder="Write your street" formControlName="street">
+                <mat-error *ngIf="street?.errors?.['required']">
+                    Street is required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Zipcode</mat-label>
+                <input matInput placeholder="Write your zipcode" formControlName="zipcode">
+                <mat-error *ngIf="zipcode?.errors?.['required']">
+                    Zip code is required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>City</mat-label>
+                <input matInput placeholder="Write your city" formControlName="city">
+                <mat-error *ngIf="city?.errors?.['required']">
+                    City is required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="Write your email address" formControlName="email">
+                <mat-error *ngIf="email?.errors?.['required']">
+                    Email jest wymagany
+                </mat-error>
+                <mat-error *ngIf="email?.errors?.['email']">
+                    Invalid email format
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Phone</mat-label>
+                <input matInput placeholder="Write phone number" formControlName="phone">
+                <mat-error *ngIf="phone?.errors?.['required']">
+                    Phone is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <h2>Your order: </h2>
+            <div class="flex flex-row justify-between items-start" >
+                <div class="cart-hcol-1">Image</div>
+                <div class="cart-hcol-2">Name</div>
+                <div class="cart-hcol-3">Quantity</div>
+                <div class="cart-hcol-4">Value</div>
+                <div class="cart-hcol-4"></div>
+            </div>
+            <div>
+                <div *ngFor="let item of cartSummary.items; let i = index">
+                    <div class="flex flex-row justify-between items-start">
+                        <div class="cart-col-1">
+                            <a routerLink="{{'/products/' + item?.product?.slug}}">
+                                <img *ngIf="!item?.product?.image" src="/assets/image-placeholder.png" width="100">
+                                <img *ngIf="item?.product?.image" src="{{'/api/data/productImages/' + item?.product?.image}}" width="100">
+                            </a>
+                        </div>
+                        <div class="cart-col-2">{{item?.product?.name}}</div>
+                        <div class="cart-col-3">{{item?.quantity}}</div>
+                        <div class="cart-col-4">{{item?.lineValue}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div fxLayoutAlign="end start">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full" >Order and payment</button>
+        </div>
+    </form>
+</div>

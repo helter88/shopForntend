@@ -8,6 +8,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from 'src/app/modules/product-details/product-details.component';
 import { CartComponent } from 'src/app/modules/cart/cart.component';
+import { OrderComponent } from 'src/app/modules/order/order.component';
 
 
 
@@ -17,7 +18,8 @@ import { CartComponent } from 'src/app/modules/cart/cart.component';
     HomeComponent,
     ProductComponent,
     ProductDetailsComponent,
-    CartComponent
+    CartComponent,
+    OrderComponent
   ],
   imports: [
     CommonModule,

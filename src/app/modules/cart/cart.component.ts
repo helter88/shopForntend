@@ -5,6 +5,7 @@ import { CartSummary, CartSummaryItem } from './cart-summary.model';
 import { CookieService } from 'ngx-cookie-service';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { CartIconService } from 'src/app/shared/services/cart-icon.service';
+import { CartCommonService } from 'src/app/shared/services/cart-common.service';
 
 @Component({
   selector: 'app-cart',
@@ -21,6 +22,7 @@ export class CartComponent {
     private route: ActivatedRoute,
     private cartService: CartService,
     private cookieService: CookieService,
+    private cartCommonService: CartCommonService,
     private router: Router,
     private formBuilder: FormBuilder,
     private cartIconService: CartIconService
@@ -37,7 +39,7 @@ export class CartComponent {
   getCart(){
     const cartId = Number(this.cookieService.get("cartId"));
     if(cartId > 0){
-      this.cartService.getCart(cartId)
+      this.cartCommonService.getCart(cartId)
         .subscribe(summary => {
           this.summary = summary;
           this.patchFormItems();
