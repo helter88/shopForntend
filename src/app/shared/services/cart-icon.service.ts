@@ -5,11 +5,11 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class CartIconService {
-  subject: Subject<number> = new Subject();
+  subject: Subject<number | null> = new Subject();
 
   constructor() { }
 
-  cartChanged(counter: number){
+  cartChanged(counter: number | null){
     this.subject.next(counter);
   }
 }

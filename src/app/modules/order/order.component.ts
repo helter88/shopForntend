@@ -5,6 +5,7 @@ import { CartSummary } from '../cart/cart-summary.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrderService } from './order.service';
 import { Order, OrderSummary } from './order.model';
+import { CartIconService } from 'src/app/shared/services/cart-icon.service';
 
 @Component({
   selector: 'app-order',
@@ -21,7 +22,8 @@ export class OrderComponent {
     private cookieService: CookieService,
     private cartCommonService: CartCommonService,
     private orderService: OrderService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private cartIconService: CartIconService
   ){}
 
   ngOnInit() {
@@ -39,7 +41,6 @@ export class OrderComponent {
 
   checkCartEmpty() {
     const cartId = Number(this.cookieService.get("cartId"));
-    console.log("cartID: ", cartId);
     this.cartCommonService.getCart(cartId)
       .subscribe(summary => {
         this.cartSummary = summary;
@@ -48,12 +49,15 @@ export class OrderComponent {
 
   submit(){
     if(this.formGroup.valid){
+      const cartId = Number(this.cookieService.get("cartId"));
       this.orderService.placeOrder({
-
+        ...this.formGroup.value,
+        cartId
       } as Order)
       .subscribe(summary => {
         this.orderSummary = summary;
         this.cookieService.delete("cartId");
+        this.cartIconService.cartChanged(null);
       })
     }
   }

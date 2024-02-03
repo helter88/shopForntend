@@ -2,7 +2,7 @@
 
 <div *ngIf="orderSummary">
     <div>Order number: {{orderSummary.id}}</div>
-    <div>Date: {{orderSummary.placeDate}}</div>
+    <div>Date: {{orderSummary.placeDate | date: 'yyyy-MM-dd HH:mm'}}</div>
     <div>Status: {{orderSummary.status}}</div>
     <div>Value: {{orderSummary.grossValue}}</div>
 </div>

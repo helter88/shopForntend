@@ -21,7 +21,7 @@ export class HeaderComponent {
   ngOnInit(){
     this.getCountProducts();
     this.cartIconService.subject
-      .subscribe(counter => this.cartProductCounter = counter > 0 ? counter: null);
+      .subscribe(counter => this.cartProductCounter = counter && counter > 0 ? counter: null);
   }
 
   getCountProducts(){
