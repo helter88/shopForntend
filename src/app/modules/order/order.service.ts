@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Order, OrderSummary } from './order.model';
+import { InitData, Order, OrderSummary } from './order.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,5 +12,9 @@ export class OrderService {
 
   placeOrder(order: Order): Observable<OrderSummary>{
     return this.http.post<OrderSummary>("api/orders", order);
+  }
+
+  getInitData(): Observable<InitData> {
+    return this.http.get<InitData>("/api/orders/initData");
   }
 }

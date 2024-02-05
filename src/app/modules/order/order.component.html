@@ -91,6 +91,26 @@
                     </div>
                 </div>
             </div>
+            <div class="flex justify-end items-start">
+                <div>Value:</div>
+                <div>{{cartSummary?.summary?.grossValue}} PLN</div>
+            </div>
+            <div>
+                <h2>Delivery:</h2>
+                <mat-radio-group class="flex flex-col" formControlName="shipment">
+                    <mat-radio-button *ngFor="let shipment of initData?.shipments" [value]="shipment"
+                        [checked]="shipment.defaultShipment">
+                        <span class="mr-3">{{shipment.name}}</span>
+                        <span>{{shipment.price}} PLN</span>
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+        <div class="justify-end">
+            <div>
+                Total value to pay: {{cartSummary?.summary?.grossValue + shipment?.value.price}} PLN
+
+            </div>
         </div>
         <div fxLayoutAlign="end start">
             <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full" >Order and payment</button>

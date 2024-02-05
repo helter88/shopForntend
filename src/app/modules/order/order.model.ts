@@ -7,6 +7,7 @@ export interface Order{
    email: string;
    phone: string;
    cartId: number;
+   shipmentId: number;
 }
 
 export interface OrderSummary{
@@ -14,4 +15,20 @@ export interface OrderSummary{
     placeDate: Date;
     status: string;
     grossValue: number;
+}
+
+export interface InitData{
+    shipments: Shipment[];
+}
+
+export interface Shipment{
+    id: number;
+    name: string;
+    price: number;
+    type: ShipmentType;
+    defaultShipment: boolean;
+}
+
+export enum ShipmentType{
+    DELIVERMAN, SELFPICKUP 
 }

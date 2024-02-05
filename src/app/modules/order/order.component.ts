@@ -4,7 +4,7 @@ import { CartCommonService } from 'src/app/shared/services/cart-common.service';
 import { CartSummary } from '../cart/cart-summary.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrderService } from './order.service';
-import { Order, OrderSummary } from './order.model';
+import { InitData, Order, OrderSummary } from './order.model';
 import { CartIconService } from 'src/app/shared/services/cart-icon.service';
 
 @Component({
@@ -17,6 +17,7 @@ export class OrderComponent {
   cartSummary!: CartSummary;
   formGroup!: FormGroup;
   orderSummary!: OrderSummary;
+  initData!: InitData;
 
   constructor(
     private cookieService: CookieService,
@@ -36,7 +37,10 @@ export class OrderComponent {
       city:['', Validators.required],
       email:['', [Validators.required, Validators.email]],
       phone:['', Validators.required],
+      shipment:['', Validators.required],
     })
+
+    this.getInitData();
   }
 
   checkCartEmpty() {
@@ -50,9 +54,12 @@ export class OrderComponent {
   submit(){
     if(this.formGroup.valid){
       const cartId = Number(this.cookieService.get("cartId"));
+      const shipmentId = Number(this.formGroup.get("shipment")?.value.id);
+      const {shipment, ...formToSend} = this.formGroup.value;
       this.orderService.placeOrder({
-        ...this.formGroup.value,
-        cartId
+        ...formToSend,
+        cartId,
+        shipmentId
       } as Order)
       .subscribe(summary => {
         this.orderSummary = summary;
@@ -60,6 +67,18 @@ export class OrderComponent {
         this.cartIconService.cartChanged(null);
       })
     }
+  }
+
+  getInitData(){
+    this.orderService.getInitData()
+      .subscribe(initData => {
+        this.initData = initData;
+        this.setDefaultShipment();
+      });
+  }
+
+  setDefaultShipment(){
+    this.formGroup.patchValue({"shipment": this.initData.shipments.filter(shipment => shipment.defaultShipment === true)[0]})
   }
 
   get firstname(){
@@ -82,5 +101,8 @@ export class OrderComponent {
   }
   get phone(){
     return this.formGroup.get("phone");
+  }
+  get shipment(){
+    return this.formGroup.get("shipment");
   }
 }
