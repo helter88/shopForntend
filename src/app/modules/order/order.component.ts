@@ -38,6 +38,7 @@ export class OrderComponent {
       email:['', [Validators.required, Validators.email]],
       phone:['', Validators.required],
       shipment:['', Validators.required],
+      payment: ['', Validators.required]
     })
 
     this.getInitData();
@@ -55,11 +56,13 @@ export class OrderComponent {
     if(this.formGroup.valid){
       const cartId = Number(this.cookieService.get("cartId"));
       const shipmentId = Number(this.formGroup.get("shipment")?.value.id);
-      const {shipment, ...formToSend} = this.formGroup.value;
+      const paymentId = Number(this.formGroup.get("payment")?.value.id);
+      const {shipment, payment, ...formToSend} = this.formGroup.value;
       this.orderService.placeOrder({
         ...formToSend,
         cartId,
-        shipmentId
+        shipmentId,
+        paymentId
       } as Order)
       .subscribe(summary => {
         this.orderSummary = summary;
@@ -74,12 +77,18 @@ export class OrderComponent {
       .subscribe(initData => {
         this.initData = initData;
         this.setDefaultShipment();
+        this.setDefaultPayment();
       });
   }
 
   setDefaultShipment(){
     this.formGroup.patchValue({"shipment": this.initData.shipments.filter(shipment => shipment.defaultShipment === true)[0]})
   }
+
+  setDefaultPayment(){
+    this.formGroup.patchValue({"payment": this.initData.payments.filter(payment => payment.defaultPayment === true)[0]})
+  }
+
 
   get firstname(){
     return this.formGroup.get("firstname");

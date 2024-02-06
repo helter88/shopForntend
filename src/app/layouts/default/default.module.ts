@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from 'src/app/modules/product-details/product-details.component';
 import { CartComponent } from 'src/app/modules/cart/cart.component';
 import { OrderComponent } from 'src/app/modules/order/order.component';
+import { ReplacePipe } from 'src/app/shared/pipes/replacePipe';
 
 
 
@@ -19,7 +20,8 @@ import { OrderComponent } from 'src/app/modules/order/order.component';
     ProductComponent,
     ProductDetailsComponent,
     CartComponent,
-    OrderComponent
+    OrderComponent,
+    ReplacePipe
   ],
   imports: [
     CommonModule,

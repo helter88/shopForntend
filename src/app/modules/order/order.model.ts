@@ -8,6 +8,7 @@ export interface Order{
    phone: string;
    cartId: number;
    shipmentId: number;
+   paymentId: number;
 }
 
 export interface OrderSummary{
@@ -15,10 +16,12 @@ export interface OrderSummary{
     placeDate: Date;
     status: string;
     grossValue: number;
+    payment: Payment
 }
 
 export interface InitData{
     shipments: Shipment[];
+    payments: Payment[];
 }
 
 export interface Shipment{
@@ -31,4 +34,16 @@ export interface Shipment{
 
 export enum ShipmentType{
     DELIVERMAN, SELFPICKUP 
+}
+
+export interface Payment{
+    id: number;
+    name: string;
+    type: PaymentType;
+    defaultPayment: boolean;
+    note: string;
+}
+
+export enum PaymentType{
+    BANK_TRANSFER
 }
