@@ -17,6 +17,8 @@ import { AdminCategoryAddComponent } from './modules/admin/admin-category/admin-
 import { CategoryComponent } from './modules/category/category.component';
 import { CartComponent } from './modules/cart/cart.component';
 import { OrderComponent } from './modules/order/order.component';
+import { AdminOrderListComponent } from './modules/admin/admin-order/admin-order-list/admin-order-list.component';
+import { AdminOrderUpdateComponent } from './modules/admin/admin-order/admin-order-update/admin-order-update.component';
 
 const routes: Routes = [{
   path: '', component: DefaultComponent, children: [{
@@ -51,6 +53,10 @@ const routes: Routes = [{
     path: 'admin/categories/update/:id', component: AdminCategoryUpdateComponent
   }, {
     path: 'admin/categories/add', component: AdminCategoryAddComponent
+  }, {
+    path: 'admin/orders', component: AdminOrderListComponent
+  }, {
+    path: 'admin/orders/update/:id', component: AdminOrderUpdateComponent
   }]
 }];
 

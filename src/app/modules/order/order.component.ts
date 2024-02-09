@@ -18,6 +18,7 @@ export class OrderComponent {
   formGroup!: FormGroup;
   orderSummary!: OrderSummary;
   initData!: InitData;
+  errorMessage = false;
 
   constructor(
     private cookieService: CookieService,
@@ -64,10 +65,14 @@ export class OrderComponent {
         shipmentId,
         paymentId
       } as Order)
-      .subscribe(summary => {
-        this.orderSummary = summary;
-        this.cookieService.delete("cartId");
-        this.cartIconService.cartChanged(null);
+      .subscribe({
+        next : summary => {
+          this.orderSummary = summary;
+          this.cookieService.delete("cartId");
+          this.cartIconService.cartChanged(null);
+          this.errorMessage = false;
+        },
+        error: err => this.errorMessage = true
       })
     }
   }

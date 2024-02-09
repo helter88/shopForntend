@@ -1,0 +1,44 @@
+<h1>Edit order</h1>
+<div>
+    <h2>Order Data</h2>
+    Order number: {{order?.id}}
+    <br /><br />
+    Date: {{order?.placeDate | date : 'yyyy-MM-dd HH:mm'}}<br />
+    PłatnPaymentość: {{order?.payment?.name}}<br /><br />
+    
+    <form class="flex flex-row justify-between items-start">
+        <div>Status: {{order?.orderStatus}}</div>
+        <button mat-flat-button color="primary">Save</button>
+    </form>
+</div>
+<div>
+    <h2>Positions</h2>
+    <div class="flex flex-row justify-between items-start">
+        <div>
+            Name
+        </div>
+        <div>Quantity</div>
+        <div>Value</div>
+    </div>
+    <div *ngFor="let row of order?.orderRows" class="flex flex-row justify-between items-start">
+        <div>
+            <span *ngIf="row.product">{{row?.product?.name}}</span>
+            <span *ngIf="row.shipment">{{row?.shipment?.name}}</span>
+        </div>
+        <div>{{row.quantity}}</div>
+        <div>{{row.quantity * row.price}}</div>
+    </div>
+    <div class="flex justify-end items-end">
+        <b>Value: {{order?.grossValue}}</b>
+    </div>
+</div>
+<div>
+    <h2>Client Data</h2>
+    <div>First Name: {{order?.firstname}}</div>
+    <div>Last Name: {{order?.lastname}}</div>
+    <div>Street: {{order?.street}}</div>
+    <div>Zipcode: {{order?.zipcode}}</div>
+    <div>City: {{order?.city}}</div>
+    <div>Email: {{order?.email}}</div>
+    <div>Phone: {{order?.phone}}</div>
+</div>

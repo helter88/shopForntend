@@ -119,10 +119,14 @@
         <div class="justify-end">
             <div>
                 Total value to pay: {{cartSummary?.summary?.grossValue + shipment?.value.price}} PLN
-
             </div>
         </div>
-        <div fxLayoutAlign="end start">
+        <div class="flex justify-end items-start">
+            <mat-error *ngIf="errorMessage">
+                Something goes wrong. Please try again later.
+            </mat-error>
+        </div>
+        <div class="flex justify-end items-start">
             <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full" >Order and payment</button>
         </div>
     </form>
