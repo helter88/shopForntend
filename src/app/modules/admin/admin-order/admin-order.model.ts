@@ -11,7 +11,8 @@ export interface AdminOrder{
     city: string,
     email: string,
     phone: string,
-    payment: AdminPayment
+    payment: AdminPayment,
+    orderLogs: AdminOrderLog[]
 }
 
 export interface AdminOrderRow{
@@ -21,6 +22,12 @@ export interface AdminOrderRow{
     quantity: number,
     price: number,
     shipment: AdminShipmentDto
+}
+
+export interface AdminOrderLog{
+    id: number,
+    created: Date,
+    note: string
 }
 
 export interface AdminPayment{
