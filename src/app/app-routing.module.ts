@@ -19,6 +19,7 @@ import { CartComponent } from './modules/cart/cart.component';
 import { OrderComponent } from './modules/order/order.component';
 import { AdminOrderListComponent } from './modules/admin/admin-order/admin-order-list/admin-order-list.component';
 import { AdminOrderUpdateComponent } from './modules/admin/admin-order/admin-order-update/admin-order-update.component';
+import { AdminOrderExportComponent } from './modules/admin/admin-order/admin-order-export/admin-order-export.component';
 
 const routes: Routes = [{
   path: '', component: DefaultComponent, children: [{
@@ -57,6 +58,8 @@ const routes: Routes = [{
     path: 'admin/orders', component: AdminOrderListComponent
   }, {
     path: 'admin/orders/update/:id', component: AdminOrderUpdateComponent
+  }, {
+    path: 'admin/orders/export', component: AdminOrderExportComponent
   }]
 }];
 

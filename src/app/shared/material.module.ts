@@ -9,6 +9,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule } from '@angular/material-moment-adapter';
 
 const materialComponents = [
   MatCardModule,
@@ -20,12 +22,17 @@ const materialComponents = [
   MatDialogModule,
   MatSelectModule,
   MatBadgeModule,
-  MatRadioModule
+  MatRadioModule,
+  MatDatepickerModule,
+  MatMomentDateModule
 ]
 
 @NgModule({
   declarations: [],
   imports: [materialComponents],
-  exports: [materialComponents]
+  exports: [materialComponents],
+  providers:[
+    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}}
+  ]
 })
 export class MaterialModule { }

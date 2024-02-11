@@ -17,6 +17,7 @@ import { AdminCategoryUpdateComponent } from 'src/app/modules/admin/admin-catego
 import { AdminCategoryFormComponent } from 'src/app/modules/admin/admin-category/admin-category.form/admin-category.form.component';
 import { AdminOrderUpdateComponent } from 'src/app/modules/admin/admin-order/admin-order-update/admin-order-update.component';
 import { AdminOrderListComponent } from 'src/app/modules/admin/admin-order/admin-order-list/admin-order-list.component';
+import { AdminOrderExportComponent } from 'src/app/modules/admin/admin-order/admin-order-export/admin-order-export.component';
 
 
 
@@ -36,6 +37,7 @@ import { AdminOrderListComponent } from 'src/app/modules/admin/admin-order/admin
     AdminCategoryFormComponent,
     AdminOrderUpdateComponent,
     AdminOrderListComponent,
+    AdminOrderExportComponent,
   ],
   imports: [
     CommonModule,

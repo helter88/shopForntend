@@ -1,0 +1,25 @@
+<h1>Orders export </h1>
+<form [formGroup]="formGroup" class="flex justify-around items-center" (submit)="export()">
+    <mat-form-field appearance="fill">
+        <mat-label>From</mat-label>
+        <input matInput placeholder="Select date from" formControlName="from" [matDatepicker]="from">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
+        <mat-datepicker #from></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Do</mat-label>
+        <input matInput placeholder="Select date to" formControlName="to" [matDatepicker]="to">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
+        <mat-datepicker #to></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="orderStatus">
+            <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full mb-3 disabled:opacity-25 disabled:hover:bg-blue-500 disabled:cursor-not-allowed" [disabled]="!formGroup.valid">Export</button>
+</form>
