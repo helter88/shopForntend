@@ -18,6 +18,7 @@ import { AdminCategoryFormComponent } from 'src/app/modules/admin/admin-category
 import { AdminOrderUpdateComponent } from 'src/app/modules/admin/admin-order/admin-order-update/admin-order-update.component';
 import { AdminOrderListComponent } from 'src/app/modules/admin/admin-order/admin-order-list/admin-order-list.component';
 import { AdminOrderExportComponent } from 'src/app/modules/admin/admin-order/admin-order-export/admin-order-export.component';
+import { AdminOrderStatisticsComponent } from 'src/app/modules/admin/admin-order/admin-order-statistics/admin-order-statistics.component';
 
 
 
@@ -38,6 +39,7 @@ import { AdminOrderExportComponent } from 'src/app/modules/admin/admin-order/adm
     AdminOrderUpdateComponent,
     AdminOrderListComponent,
     AdminOrderExportComponent,
+    AdminOrderStatisticsComponent,
   ],
   imports: [
     CommonModule,

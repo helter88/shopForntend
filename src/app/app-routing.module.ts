@@ -20,6 +20,7 @@ import { OrderComponent } from './modules/order/order.component';
 import { AdminOrderListComponent } from './modules/admin/admin-order/admin-order-list/admin-order-list.component';
 import { AdminOrderUpdateComponent } from './modules/admin/admin-order/admin-order-update/admin-order-update.component';
 import { AdminOrderExportComponent } from './modules/admin/admin-order/admin-order-export/admin-order-export.component';
+import { AdminOrderStatisticsComponent } from './modules/admin/admin-order/admin-order-statistics/admin-order-statistics.component';
 
 const routes: Routes = [{
   path: '', component: DefaultComponent, children: [{
@@ -60,6 +61,8 @@ const routes: Routes = [{
     path: 'admin/orders/update/:id', component: AdminOrderUpdateComponent
   }, {
     path: 'admin/orders/export', component: AdminOrderExportComponent
+  }, {
+    path: 'admin/orders/statistics', component: AdminOrderStatisticsComponent
   }]
 }];
 

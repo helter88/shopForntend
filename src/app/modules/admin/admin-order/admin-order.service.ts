@@ -38,4 +38,8 @@ export class AdminOrderService {
       observe: 'response'
     });
   }
+
+  getSalesStatistics(): Observable<any>{
+    return this.http.get<any>("api/admin/orders/statistics");
+  }
 }
