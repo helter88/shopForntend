@@ -1,0 +1,12 @@
+<form [formGroup]="formGroup" class="flex flex-col" (submit)="submit()">
+    <p *ngIf="loginError" class="text-red-600 m-3 self-center"> Invalid login or password</p>
+    <mat-form-field appearance="fill">
+        <mat-label>Login</mat-label>
+        <input matInput formControlName="username">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Hasło</mat-label>
+        <input type="password" matInput formControlName="password">
+    </mat-form-field>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full">Zaloguj</button>
+</form>

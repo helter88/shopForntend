@@ -20,8 +20,6 @@ import { AdminOrderListComponent } from 'src/app/modules/admin/admin-order/admin
 import { AdminOrderExportComponent } from 'src/app/modules/admin/admin-order/admin-order-export/admin-order-export.component';
 import { AdminOrderStatisticsComponent } from 'src/app/modules/admin/admin-order/admin-order-statistics/admin-order-statistics.component';
 
-
-
 @NgModule({
   declarations: [
     FullpageadminComponent,
