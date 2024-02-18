@@ -10,6 +10,7 @@ import { ProductDetailsComponent } from 'src/app/modules/product-details/product
 import { CartComponent } from 'src/app/modules/cart/cart.component';
 import { OrderComponent } from 'src/app/modules/order/order.component';
 import { ReplacePipe } from 'src/app/shared/pipes/replacePipe';
+import { ProfileComponent } from 'src/app/modules/profile/profile.component';
 
 
 
@@ -21,7 +22,8 @@ import { ReplacePipe } from 'src/app/shared/pipes/replacePipe';
     ProductDetailsComponent,
     CartComponent,
     OrderComponent,
-    ReplacePipe
+    ReplacePipe,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,

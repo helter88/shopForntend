@@ -6,7 +6,7 @@ import { JwtService } from "../services/jwt.service";
 export const adminAuthorizedGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean => {
     const jwtService = inject(JwtService);
     const router = inject(Router);
-    if(!jwtService.isLoggedIn()){
+    if(!jwtService.isLoggedIn() || !jwtService.getAdminAccess()){
         router.navigate(["/admin/login"]);
     }
     return true;
