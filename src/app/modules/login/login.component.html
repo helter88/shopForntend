@@ -1,1 +1,36 @@
-<p>login works!</p>
+<div class="flex flex-row">
+    <div class="flex-grow">
+        <h2>Logowanie</h2>
+        <form [formGroup]="loginForm" class="flex flex-col" (submit)="login()">
+            <p *ngIf="loginError" class="text-red-600 m-3 self-center"> Invalid login or password</p>
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="username" placeholder="Write your e-mail">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Hasło</mat-label>
+                <input type="password" matInput formControlName="password">
+            </mat-form-field>
+            <button class="button-blue">Zaloguj</button>
+        </form>
+    </div>
+    <div class="flex-grow">
+        <h2>Rejestracja</h2>
+        <form [formGroup]="registerForm" class="flex flex-col" (submit)="register()">
+            <div *ngIf="registerError" class="error">Podaj poprawne dane logowania</div>
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="username" placeholder="Write your e-mail">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Hasło</mat-label>
+                <input type="password" matInput formControlName="password">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Powtórz hasło</mat-label>
+                <input type="password" matInput formControlName="repeatPassword" placeholder="Powtórz hasło">
+            </mat-form-field>
+            <button class="button-blue">Zaloguj</button>
+</form>
+    </div>
+</div>

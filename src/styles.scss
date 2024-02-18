@@ -3,3 +3,11 @@
 @tailwind utilities;
 
 html, body { height: 100%; }
+
+.button-blue {
+    @apply bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full disabled:bg-slate-200 disabled:text-slate-500 disabled:cursor-not-allowed;
+}
+
+.button-rose {
+    @apply bg-rose-500 hover:bg-rose-700 text-white py-2 px-4 rounded-full; 
+}

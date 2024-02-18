@@ -21,20 +21,20 @@
                 <div class="cart-col-3"><input type="number" formControlName="quantity"></div>
                 <div class="cart-col-4">{{item.value?.lineValue}}</div>
                 <div class="cart-col-5">
-                    <button class="bg-red-400 hover:bg-red-700 text-white py-2 px-4 rounded-full" (click)="deleteItem(item.value.id)">delete</button>
+                    <button class="button-rose" (click)="deleteItem(item.value.id)">delete</button>
                 </div>
             </div>
         </div>
     </div>
     <div class="flex justify-end items-start">
-        <button class="bg-red-400 hover:bg-red-700 text-white py-2 px-4 rounded-full" (click)="submit()">Refresh cart</button>
+        <button class="button-rose" (click)="submit()">Refresh cart</button>
     </div>
     <div class="flex justify-end items-start">
         <div class="summary"> Total value: </div>
         <div class="summary"> <b>{{summary?.summary?.grossValue}}</b></div>
     </div>
     <div class="flex justify-end items-start">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full" 
+        <button class="button-blue" 
             type="button" routerLink="/order">Order</button>
     </div>
 </div>
