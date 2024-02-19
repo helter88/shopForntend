@@ -1,4 +1,8 @@
-<h1>Order</h1>
+<div class="flex flex-row justify-between">
+  <h1>Order</h1> 
+  <p *ngIf="!isLoggedin"><a class="font-bold underline" routerLink="/login">Login</a> to see your orders</p> 
+</div>
+
 
 <div *ngIf="orderSummary">
     <div>Order number: {{orderSummary.id}}</div>
@@ -6,6 +10,7 @@
     <div>Status: {{orderSummary.status}}</div>
     <div>Value: {{orderSummary.grossValue}}</div>
     <div *ngIf="orderSummary.payment.note">Payment: <br><span [innerHTML]="orderSummary.payment.note | replce: '\n': '\<br>'"></span></div>
+    <div *ngIf="isLoggedin"> You can follow your order status on your <a class="font-bold underline" routerLink="/profile">profile page</a>. </div>
 </div>
 
 <div *ngIf="!orderSummary && cartSummary && cartSummary.items.length <= 0">

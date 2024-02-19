@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrderService } from './order.service';
 import { InitData, Order, OrderSummary } from './order.model';
 import { CartIconService } from 'src/app/shared/services/cart-icon.service';
+import { JwtService } from 'src/app/shared/services/jwt.service';
 
 @Component({
   selector: 'app-order',
@@ -19,13 +20,15 @@ export class OrderComponent {
   orderSummary!: OrderSummary;
   initData!: InitData;
   errorMessage = false;
+  isLoggedin = false;
 
   constructor(
     private cookieService: CookieService,
     private cartCommonService: CartCommonService,
     private orderService: OrderService,
     private formBuilder: FormBuilder,
-    private cartIconService: CartIconService
+    private cartIconService: CartIconService,
+    private jwtService: JwtService,
   ){}
 
   ngOnInit() {
@@ -43,6 +46,7 @@ export class OrderComponent {
     })
 
     this.getInitData();
+    this.isLoggedin = this.jwtService.isLoggedIn();
   }
 
   checkCartEmpty() {
