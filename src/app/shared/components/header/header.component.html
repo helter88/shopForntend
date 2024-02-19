@@ -5,7 +5,8 @@
     <div class="flex flex-row gap-4">
         <button routerLink="" >Main Page</button>
         <button routerLink="/products">Products</button>
-        <button routerLink="/login" class="ml-3">Login</button>
+        <button *ngIf="!isLoggedIn" routerLink="/login" class="ml-3">Login</button>
+        <button *ngIf="isLoggedIn" routerLink="/profile" class="ml-3">Profile</button>
         <a routerLink="cart"><mat-icon class="text-lime-400" matBadge="{{cartProductCounter}}">shopping_basket</mat-icon></a>
     </div>
 </header>
