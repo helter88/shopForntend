@@ -6,6 +6,7 @@ export interface Product {
     category: string; 
     description: string; 
     price: number; 
+    discountPrice: number;
     currency: string;
     image: string;
     slug: string;
@@ -17,6 +18,7 @@ export interface ProductDetails {
     description: string;
     category: string;
     price: number;
+    discountPrice: number;
     currency: string;
     image: string;
     slug: string;

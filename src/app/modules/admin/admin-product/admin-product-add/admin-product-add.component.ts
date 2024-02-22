@@ -36,6 +36,7 @@ export class AdminProductAddComponent {
       description: [''],
       categoryId: [null,[Validators.required]],
       price: [0, [Validators.required, Validators.min(0), Validators.pattern("^[0-9]+(\\.[0-9]{1,2})?$")]],
+      discountPrice: [0, [Validators.min(0.1), Validators.pattern("^[0-9]+(\\.[0-9]{1,2})?$")]],
       currency: ['PLN', Validators.required],
       slug: ['', [Validators.required, Validators.minLength(2)]],
     })

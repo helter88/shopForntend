@@ -3,6 +3,7 @@ export interface AdminProduct{
     name: string;
     image: string;
     price: string;
+    discountPrice: string;
     currency: string;
 }
 
