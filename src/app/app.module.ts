@@ -23,7 +23,7 @@ import { JwtInterceptor } from './shared/interceptor/jwt.interceptor';
     FullpageadminModule,
     FullpageadminemptyModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     CookieService,

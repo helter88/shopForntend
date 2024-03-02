@@ -1,7 +1,19 @@
-<header class="p-5 flex flex-row justify-between bg-pink-600">
-    <div>
-        Logo
+<header class="flex flex-row pl-2 pr-6 shadow-lg">
+    <div class="w-20 h-auto">
+        <img src="assets/ElecElite.png" alt="Logo">
     </div>
+    <form class="self-center ml-4 mr-6 w-3/4">
+        <input type="text"
+               placeholder="Search for a product"
+               [formControl]="control"
+               [matAutocomplete]="auto"
+               class="border-2 border-solid border-slate-700 p-3 rounded-full w-full">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let product of filteredStreets | async" [value]="product">
+            {{product}}
+          </mat-option>
+        </mat-autocomplete>
+      </form>
     <div class="flex flex-row gap-4">
         <button routerLink="" >Main Page</button>
         <button routerLink="/products">Products</button>

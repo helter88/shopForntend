@@ -1,5 +1,5 @@
 <h1>Special price</h1>
-<mat-card *ngFor="let prod of data.discountedProducts" class="mb-4">
+<mat-card *ngFor="let prod of data?.discountedProducts" class="mb-4">
     <div class="flex flex-row">
       <div class="flex-1">
         <mat-card-header>
@@ -17,7 +17,7 @@
       </div>
       <div class="p-4 flex flex-col">
         <span>{{prod.price + " "+ prod.currency}}</span>
-        <span *ngIf="prod.discountPrice">{{prod.discountPrice + " "+ prod.currency}}</span>
+        <span *ngIf="prod?.discountPrice">{{prod?.discountPrice + " "+ prod.currency}}</span>
       </div>
     </div>
     <mat-card-actions class="gap-4 m-4 justify-end">
