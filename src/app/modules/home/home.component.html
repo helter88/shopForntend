@@ -1,29 +1,25 @@
-<h1>Special price</h1>
-<mat-card *ngFor="let prod of data?.discountedProducts" class="mb-4">
-    <div class="flex flex-row">
-      <div class="flex-1">
-        <mat-card-header>
-        <mat-card-title><a class="hover:opacity-70" routerLink="{{prod.slug}}">{{prod.name}}</a></mat-card-title>
-        <mat-card-subtitle>{{prod.category}}</mat-card-subtitle>
-        </mat-card-header>
-        <div class="flex flow-row pl-4">
-          <a routerLink="{{prod.slug}}">
-            <img *ngIf="!prod.image" src="/assets/image-placeholder.png" mat-card-lg-image>
-            <img *ngIf="prod.image" src="{{'/api/data/productImages/' + prod.image}}" mat-card-lg-image>
-          </a>
-          
-          <mat-card-content>{{prod.description}}</mat-card-content>
-        </div>
+<span class="font-extrabold text-3xl">Cut-price</span>
+<div *ngFor="let prod of data?.discountedProducts" class="border-b flex flex-row py-6 product-hover">
+  <div matTooltip="See product details">
+    <a routerLink="{{prod.slug}}">
+      <img *ngIf="!prod.image" src="/assets/image-placeholder.png" class="object-scale-down h-44 w-64">
+      <img *ngIf="prod.image" src="{{'/api/data/productImages/' + prod.image}}" class="object-scale-down h-44 w-64">
+    </a>
+  </div>
+  <div class="flex flex-col flex-1 justify-between">
+    <a routerLink="{{prod.slug}}">
+      <div matTooltip="See product details" class="flex flex-col gap-2">
+        <span class="font-semibold text-lg"><a class="hover:opacity-70 transition-colors duration-700" routerLink="{{prod.slug}}">{{prod.name}}</a></span>
+        <span>{{prod.description}}</span>
       </div>
-      <div class="p-4 flex flex-col">
-        <span>{{prod.price + " "+ prod.currency}}</span>
-        <span *ngIf="prod?.discountPrice">{{prod?.discountPrice + " "+ prod.currency}}</span>
-      </div>
+    </a>
+    <div>
+      <button class="bg-purple-700 hover:bg-purple-500 text-white py-2 px-4 rounded-full transition-colors duration-700" routerLink="/cart"
+        [queryParams]="{productId: prod?.id}">Add to cart </button>
     </div>
-    <mat-card-actions class="gap-4 m-4 justify-end">
-      <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full"
-        routerLink="{{ prod.slug}}">Show</button>
-      <button class="bg-red-400 hover:bg-red-700 text-white py-2 px-4 rounded-full"
-        routerLink="/cart" [queryParams]="{productId: prod?.id}">Add to cart </button>
-    </mat-card-actions>
-  </mat-card>
+  </div>
+  <a routerLink="{{prod.slug}}" class="flex flex-col mr-10 gap-1" matTooltip="See product details">
+    <span *ngIf="prod.discountPrice" class="font-semibold">{{prod.discountPrice + " "+ prod.currency}}</span>
+    <span [ngClass]="prod.discountPrice ? 'line-through': 'font-semibold'">{{prod.price + " "+ prod.currency}}</span>
+  </a>
+</div>

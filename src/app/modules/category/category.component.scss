@@ -1,0 +1,9 @@
+.product-hover  {
+    &:hover {
+    cursor: pointer;
+        & img {
+            filter: brightness(75%); 
+            transition: filter 0.5s ease-in;
+        }
+    }
+}

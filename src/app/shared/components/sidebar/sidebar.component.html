@@ -1,6 +1,10 @@
-<div class="flex flex-col gap-3">
+<div class="flex flex-col items-center gap-1 mt-6">
+    <h2>Categories: </h2>
+    <button [routerLink]="'/products'" routerLinkActive="border-purple-700 bg-purple-700 text-white"
+    class="transition-colors duration-700 w-40 py-4 border border-transparent hover:border-purple-700 hover:bg-purple-700 hover:text-white" >All Products</button>
     <ng-container *ngFor="let cat of categories">
-        <button [routerLink]="'/categories/'+ cat.slug" >{{cat.name}}</button>
+        <button [routerLink]="'/categories/'+ cat.slug" routerLinkActive="border-purple-700 bg-purple-700 text-white"
+        class="transition-colors duration-700 w-40 py-4 border border-transparent hover:border-purple-700 hover:bg-purple-700 hover:text-white" >{{cat.name}}</button>
     </ng-container>  
 </div>
 
