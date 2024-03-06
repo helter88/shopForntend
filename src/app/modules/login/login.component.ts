@@ -15,10 +15,6 @@ export class LoginComponent {
   loginForm!: FormGroup;
   loginError = false;
 
-  registerForm!: FormGroup;
-  registerError = false;
-  registerErrorMessage = "";
-
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
@@ -34,12 +30,6 @@ export class LoginComponent {
       username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     })
-
-    this.registerForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      repeatedPassword: ['', Validators.required]
-    })
   }
 
   login(){
@@ -54,36 +44,5 @@ export class LoginComponent {
           error: () => this.loginError = true
         });
     }
-  }
-
-  register(){
-    if(this.registerForm.valid && this.isPasswordIdentical(this.registerForm.value)){
-      this.loginService.register(this.registerForm.value)
-        .subscribe({
-          next: response => {
-            this.jwtService.setToken(response.token);
-            this.router.navigate([this.REDIRECT_ROUTE]);
-          },
-          error: (err) => {
-            this.registerError = true;
-            if(err.error.message){
-              this.registerErrorMessage = err.error.message;
-            }else{
-              this.registerErrorMessage = "Something has gone wrong please try again later";
-            }
-            
-          }
-      });
-    }
-  }
-
-  isPasswordIdentical(register: any): boolean {
-    if(register.password === register.repeatedPassword){
-      this.registerError = false;
-      return true;
-    }
-    this.registerError = true;
-    this.registerErrorMessage = "Paswords are not identical";
-    return false;
   }
 }

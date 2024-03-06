@@ -1,34 +1,35 @@
 <header class="flex flex-row pl-2 pr-6 shadow-lg">
-    <div class="w-20 h-auto">
-        <img src="assets/ElecElite.png" alt="Logo">
+  <div class="w-20 h-auto">
+    <img src="assets/ElecElite.png" alt="Logo">
+  </div>
+  <form class="self-center ml-4 mr-6 w-3/4">
+    <div class="flex items-center border border-solid border-slate-700 p-3 rounded-full focus-within:outline-none">
+      <mat-icon class="text-slate-700 mr-2">search</mat-icon>
+      <input type="text" placeholder="Search for a product" [formControl]="control" [matAutocomplete]="auto"
+        class="bg-transparent w-full focus:outline-none">
     </div>
-    <form class="self-center ml-4 mr-6 w-3/4">
-      <div class="flex items-center border border-solid border-slate-700 p-3 rounded-full focus-within:outline-none">
-        <mat-icon class="text-slate-700 mr-2">search</mat-icon>
-        <input type="text"
-               placeholder="Search for a product"
-               [formControl]="control"
-               [matAutocomplete]="auto"
-               class="bg-transparent w-full focus:outline-none">
-      </div>
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let product of filteredStreets | async" [value]="product">
-          {{ product }}
-        </mat-option>
-      </mat-autocomplete>
-    </form>
-    <div class="flex flex-row gap-5">
-        <button routerLink="" class="hover:text-purple-500 transition-colors duration-500" >Home</button>
-        <button routerLink="/products" class="hover:text-purple-500 transition-colors duration-500">Products</button>
-        <button *ngIf="!isLoggedIn" routerLink="/login" class="hover:text-purple-500 transition-colors duration-500">Login</button>
-        <button routerLink="cart" class="hover:text-purple-500 transition-colors duration-500">
-          <mat-icon class="custom-badge" matBadge="{{cartProductCounter}}" matBadgeSize="small">shopping_cart</mat-icon>
-        </button>
-        <button *ngIf="isLoggedIn" routerLink="/profile" class="hover:text-purple-500 transition-colors duration-500"><mat-icon>person</mat-icon></button>
-        <ng-container *ngIf="!isLoggedIn">
-          <button class="bg-white text-black px-4 py-2 my-auto whitespace-nowrap border  border-slate-800 hover:bg-slate-200 font-medium transition-colors duration-500">Log in</button>
-          <button class="bg-slate-800 border border-slate-800  text-white px-4 py-2 my-auto hover:opacity-80 font-medium  transition-colors duration-500">Register</button>
-        </ng-container>
-        
-    </div>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let product of filteredStreets | async" [value]="product">
+        {{ product }}
+      </mat-option>
+    </mat-autocomplete>
+  </form>
+  <div class="flex flex-row gap-5">
+    <button routerLink="" class="hover:text-purple-500 transition-colors duration-500">Home</button>
+    <button routerLink="/products" class="hover:text-purple-500 transition-colors duration-500">Products</button>
+    <button routerLink="cart" class="hover:text-purple-500 transition-colors duration-500">
+      <mat-icon class="custom-badge" matBadge="{{cartProductCounter}}" matBadgeSize="small">shopping_cart</mat-icon>
+    </button>
+    <button *ngIf="isLoggedIn" routerLink="/profile"
+      class="hover:text-purple-500 transition-colors duration-500"><mat-icon>person</mat-icon></button>
+    <ng-container *ngIf="!isLoggedIn">
+      <button
+        class="bg-white text-black px-4 py-2 my-auto whitespace-nowrap border  border-slate-800 hover:bg-slate-200 font-medium transition-colors duration-500"
+        routerLink="/login">Log in</button>
+      <button
+        class="bg-slate-800 border border-slate-800  text-white px-4 py-2 my-auto hover:opacity-80 font-medium  transition-colors duration-500"
+        routerLink="/register">Register</button>
+    </ng-container>
+
+  </div>
 </header>

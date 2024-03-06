@@ -13,6 +13,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
 
 const materialComponents = [
   MatCardModule,
@@ -28,7 +29,8 @@ const materialComponents = [
   MatDatepickerModule,
   MatMomentDateModule,
   MatAutocompleteModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatButtonModule
 ]
 
 @NgModule({

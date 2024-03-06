@@ -5,13 +5,14 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
-  
+export class RegisterService {
+
   constructor(
     private http: HttpClient
-    ) { }
-    
-    login(login: any): Observable<any> {
-      return this.http.post("api/login", login);
-    }
+  ) { }
+  
+  register(register: any): Observable<any>{
+    return this.http.post("api/register", register);
+  }
+
 }

@@ -25,6 +25,7 @@ import { ProductDetailsComponent } from './modules/product-details/product-detai
 import { ProductComponent } from './modules/product/product.component';
 import { adminAuthorizedGuard } from './shared/guard/adminAuthorizeGuard';
 import { ProfileComponent } from './modules/profile/profile.component';
+import { RegisterComponent } from './modules/register/register.component';
 
 const routes: Routes = [
 {
@@ -46,6 +47,8 @@ const routes: Routes = [
 }, {
   path: '', component: FullpageComponent, children: [{
     path: 'login', component: LoginComponent
+  },{
+    path: 'register', component: RegisterComponent
   }]
 }, {
   path: '', component: FullpageadminComponent, canActivateChild: [adminAuthorizedGuard],
