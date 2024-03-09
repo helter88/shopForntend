@@ -1,12 +1,20 @@
+<div class="flex flex-col">
+<div class="w-32 h-auto self-center">
+    <img src="assets/ElecElite.png" alt="Logo">
+</div>
+<div class="text-xl font-semibold self-center">ElecElite</div>
+<div class="text-lg  self-center mb-6">Management System</div>
+
 <form [formGroup]="formGroup" class="flex flex-col" (submit)="submit()">
     <p *ngIf="loginError" class="text-red-600 m-3 self-center"> Invalid login or password</p>
-    <mat-form-field appearance="fill">
-        <mat-label>Login</mat-label>
-        <input matInput formControlName="username">
+    <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="username" placeholder="Write your e-mail">
     </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>Hasło</mat-label>
+    <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
         <input type="password" matInput formControlName="password">
     </mat-form-field>
-    <button class="button-blue">Zaloguj</button>
+    <button mat-flat-button color="primary" class="!py-6 !font-semibold">Log in</button>
 </form>
+</div>

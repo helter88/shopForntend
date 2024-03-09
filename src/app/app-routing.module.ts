@@ -73,7 +73,7 @@ const routes: Routes = [
   }, {
     path: 'admin/orders/export', component: AdminOrderExportComponent,
   }, {
-    path: 'admin/orders/statistics', component: AdminOrderStatisticsComponent,
+    path: 'admin/statistics', component: AdminOrderStatisticsComponent,
   }]
 }, {
   path: '', component: FullpageadminemptyComponent, children: [{
