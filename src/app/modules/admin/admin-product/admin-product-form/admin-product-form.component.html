@@ -1,45 +1,83 @@
-<form class="flex flex-col" [formGroup] ="parentForm" (submit)="submit()">
-    <mat-form-field>
+<div>
+    <h1>New Product</h1>
+    <h1>Update Product</h1>
+</div>
+<form class="flex flex-col w-1/2 mx-auto" [formGroup]="productForm">
+    <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
         <input matInput placeholder="write product name" formControlName="name">
-        <mat-error *ngIf="parentForm.get('name')?.errors?.['required']">Name is required</mat-error>
-        <mat-error *ngIf="parentForm.get('name')?.errors?.['minlength']">Name has to be at least 2 characters long</mat-error>
+        <mat-error *ngIf="productForm.get('name')?.errors?.['required']">Name is required</mat-error>
+        <mat-error *ngIf="productForm.get('name')?.errors?.['minlength']">Name has to be at least 2 characters
+            long</mat-error>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
         <mat-label>custom url</mat-label>
         <input matInput placeholder="write custom url" formControlName="slug">
-        <mat-error *ngIf="parentForm.get('slug')?.errors?.['required']">Custom url is required</mat-error>
-        <mat-error *ngIf="parentForm.get('slug')?.errors?.['minlength']">Custom url has to be at least 2 characters long</mat-error>
+        <mat-error *ngIf="productForm.get('slug')?.errors?.['required']">Custom url is required</mat-error>
+        <mat-error *ngIf="productForm.get('slug')?.errors?.['minlength']">Custom url has to be at least 2 characters
+            long</mat-error>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
         <mat-label>Category</mat-label>
         <mat-select formControlName="categoryId">
-          <mat-option *ngFor="let category of categories" [value]="category.id">
-            {{category.name}}
-          </mat-option>
+            <mat-option *ngFor="let category of categories" [value]="category.id">
+                {{category.name}}
+            </mat-option>
         </mat-select>
-        <mat-error *ngIf="parentForm.get('categoryId')?.errors?.['required']">Category is required</mat-error>
-      </mat-form-field>
-    <mat-form-field>
+        <mat-error *ngIf="productForm.get('categoryId')?.errors?.['required']">Category is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
         <mat-label>Price</mat-label>
         <input matInput placeholder="write product price" formControlName="price">
-        <mat-error *ngIf="parentForm.get('price')?.errors?.['required']">Price is required</mat-error>
-        <mat-error *ngIf="parentForm.get('price')?.errors?.['min']">Price has to be above 0</mat-error>
-        <mat-error *ngIf="parentForm.get('price')?.errors?.['pattern']">Price has to be an number</mat-error>
+        <mat-error *ngIf="productForm.get('price')?.errors?.['required']">Price is required</mat-error>
+        <mat-error *ngIf="productForm.get('price')?.errors?.['min']">Price has to be above 0</mat-error>
+        <mat-error *ngIf="productForm.get('price')?.errors?.['pattern']">Price has to be an number</mat-error>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
         <mat-label>Discount Price</mat-label>
         <input matInput placeholder="write product sales price" formControlName="discountPrice">
-        <mat-error *ngIf="parentForm.get('discountPrice')?.errors?.['min']">Discount Price has to be above 0</mat-error>
-        <mat-error *ngIf="parentForm.get('discountPrice')?.errors?.['pattern']">Discount Price has to be an number</mat-error>
+        <mat-error *ngIf="productForm.get('discountPrice')?.errors?.['min']">Discount Price has to be above
+            0</mat-error>
+        <mat-error *ngIf="productForm.get('discountPrice')?.errors?.['pattern']">Discount Price has to be an
+            number</mat-error>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
         <mat-label>Currency</mat-label>
         <input matInput placeholder="write product currency" formControlName="currency">
-        <mat-error *ngIf="parentForm.get('currency')?.errors?.['required']">Currency is required</mat-error>
+        <mat-error *ngIf="productForm.get('currency')?.errors?.['required']">Currency is required</mat-error>
     </mat-form-field>
-    <div class="self-end">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full disabled:bg-slate-200 disabled:text-slate-500 disabled:cursor-not-allowed" 
-        [disabled]="!parentForm.valid">Save</button>
-    </div>
+
 </form>
+<div>
+    <input type="file" #fileInput id="file" (change)="onFileSelect($event)" multiple [accept]="'.jpg,.png,.jpeg'"
+        hidden>
+    <div class="h-40 w-full bg-purple-200 border-dashed border border-purple-400 rounded-lg flex justify-center items-center"
+        appDrag (files)="onDropped($event)">
+        <span class="text-slate-900">Drag and drop your files or
+            <a class="cursor-pointer font-medium underline text-indigo-900" (click)="fileInput.click()">select</a> files
+        </span>
+    </div>
+</div>
+<div class="flex flex-row justify-center mt-6">
+    <div>Max 4 photos</div>
+</div>
+<div class="grid grid-cols-4 gap-4 h-44 mb-4 border border-purple-400">
+    <div *ngFor="let fileHandler of selectedFiles; let i = index" class="relative">
+        <div class="relative h-full flex flex-row justify-center">
+            <img [src]="fileHandler?.url" alt="thumbnail" class="object-contain h-44 mx-auto">
+            <div class="absolute bottom-0">
+                <button mat-mini-fab color="warn" (click)="removeFile(i)">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div class="flex flex-row justify-center mt-2">
+            <span>{{ fileHandler.file.name }}</span>
+        </div>
+    </div>
+</div>
+<div>
+    <button
+        class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full disabled:bg-slate-200 disabled:text-slate-500 disabled:cursor-not-allowed"
+        [disabled]="!productForm.valid" (click)="submit()">Save</button>
+</div>

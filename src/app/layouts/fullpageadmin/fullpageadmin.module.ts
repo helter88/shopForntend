@@ -19,6 +19,7 @@ import { AdminOrderUpdateComponent } from 'src/app/modules/admin/admin-order/adm
 import { AdminOrderListComponent } from 'src/app/modules/admin/admin-order/admin-order-list/admin-order-list.component';
 import { AdminOrderExportComponent } from 'src/app/modules/admin/admin-order/admin-order-export/admin-order-export.component';
 import { AdminOrderStatisticsComponent } from 'src/app/modules/admin/admin-order/admin-order-statistics/admin-order-statistics.component';
+import { DragProductImageDirective } from 'src/app/modules/admin/admin-product/admin-product-form/drag-product-image.directive';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AdminOrderStatisticsComponent } from 'src/app/modules/admin/admin-order
     AdminOrderListComponent,
     AdminOrderExportComponent,
     AdminOrderStatisticsComponent,
+    DragProductImageDirective,
   ],
   imports: [
     CommonModule,

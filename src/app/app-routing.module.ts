@@ -26,6 +26,7 @@ import { ProductComponent } from './modules/product/product.component';
 import { adminAuthorizedGuard } from './shared/guard/adminAuthorizeGuard';
 import { ProfileComponent } from './modules/profile/profile.component';
 import { RegisterComponent } from './modules/register/register.component';
+import { AdminProductFormComponent } from './modules/admin/admin-product/admin-product-form/admin-product-form.component';
 
 const routes: Routes = [
 {
@@ -59,7 +60,7 @@ const routes: Routes = [
   }, {
     path: 'admin/products/update/:id', component: AdminProductUpdateComponent,
   }, {
-    path: 'admin/products/add', component: AdminProductAddComponent,
+    path: 'admin/products/add', component: AdminProductFormComponent,
   }, {
     path: 'admin/categories', component: AdminCategoryComponent,
   }, {
