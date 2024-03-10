@@ -1,6 +1,6 @@
-<div>
-    <h1>New Product</h1>
-    <h1>Update Product</h1>
+<div class="mt-4 flex flex-row justify-center">
+    <h1 *ngIf="!productId">New Product</h1>
+    <h1 *ngIf="productId">Update Product</h1>
 </div>
 <form class="flex flex-col w-1/3 mx-auto" [formGroup]="productForm">
     <mat-form-field appearance="outline">

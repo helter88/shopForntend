@@ -58,7 +58,7 @@ const routes: Routes = [
   }, {
     path: 'admin/products', component: AdminProductComponent,
   }, {
-    path: 'admin/products/update/:id', component: AdminProductUpdateComponent,
+    path: 'admin/products/update/:id', component: AdminProductFormComponent,
   }, {
     path: 'admin/products/add', component: AdminProductFormComponent,
   }, {

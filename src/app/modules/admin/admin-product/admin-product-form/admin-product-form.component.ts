@@ -1,10 +1,12 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FormCategoryService } from './form-category.service';
-import { AdminCategory } from '../../admin.model';
-import { FileHandler, ImageDto } from './admin-forduct-form.model';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { AdminCategory } from '../../admin.model';
+import { AdminProduct, FileHandler, ImageDto } from './admin-forduct-form.model';
 import { base64ToBlob, processSelectedFileList } from './admin-product-form-util';
+import { AdminProductFormService } from './admin-product-form.service';
+import { FormCategoryService } from './form-category.service';
 
 @Component({
   selector: 'app-admin-product-form',
@@ -19,11 +21,14 @@ export class AdminProductFormComponent {
   selectedFiles: FileHandler[] = [];
 
   categories: AdminCategory[] = [];
+  productId!: number | null;
 
   constructor(
     private catService: FormCategoryService,
     private formBuilder: FormBuilder,
     private sanitazier: DomSanitizer,
+    private adminProductFormService: AdminProductFormService,
+    private router: ActivatedRoute,
   ){}
 
   ngOnInit() {
@@ -37,6 +42,15 @@ export class AdminProductFormComponent {
       currency: ['PLN', Validators.required],
       slug: ['', [Validators.minLength(2)]],
     })
+    this.productId = Number(this.router.snapshot.params['id']);
+    if(this.productId){
+      this.getProducts(this.productId);
+    }
+  }
+
+  getProducts(productId: number){
+    this.adminProductFormService.getProduct(productId)
+      .subscribe(prod => this.mapProductForm(prod));
   }
 
   submit(){
@@ -66,5 +80,24 @@ export class AdminProductFormComponent {
   private createFileFromImage(image: ImageDto): File {
     const blob = base64ToBlob(image.base64, image.filetype);
     return new File([blob], image.filename, { type: image.filetype });
+  }
+
+  private mapProductForm(prod: AdminProduct): void {
+    this.productForm.setValue({
+      name: prod?.name,
+      description: prod?.description,
+      categoryId: prod?.categoryId,
+      price: prod?.price,
+      discountPrice: prod?.discountPrice,
+      currency: prod?.currency,
+      slug: prod?.slug
+    });
+    prod?.images?.forEach(img => {
+      const file = this.createFileFromImage(img);
+      this.selectedFiles.push({
+        file,
+        url: this.sanitazier.bypassSecurityTrustUrl(URL.createObjectURL(file))
+      })
+     })
   }
 }
