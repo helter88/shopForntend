@@ -10,7 +10,7 @@ export const processSelectedFileList = (fileList: FileList, selectedFiles: FileH
     for (let i = 0; i < fileList.length; i++) {
         if (selectedFiles.length >= 4) {
           // Przekroczenie limitu plików
-          alert("Można przesłać maksymalnie 4 zdjęcia.");
+          alert("You can upload max 4 images.");
           break;
         }
     
@@ -26,7 +26,7 @@ export const processSelectedFileList = (fileList: FileList, selectedFiles: FileH
           }
           selectedFiles.push(fileHandler);
         } else {
-          alert("Dozwolone są tylko pliki obrazów.");
+          alert("Invalid file type. Images only allowed.");
         }
     }
     return selectedFiles;
