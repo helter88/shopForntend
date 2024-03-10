@@ -28,14 +28,14 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Price</mat-label>
-        <input matInput placeholder="write product price" formControlName="price">
+        <input matInput placeholder="write product price" formControlName="price" type="number">
         <mat-error *ngIf="productForm.get('price')?.errors?.['required']">Price is required</mat-error>
         <mat-error *ngIf="productForm.get('price')?.errors?.['min']">Price has to be above 0</mat-error>
         <mat-error *ngIf="productForm.get('price')?.errors?.['pattern']">Price has to be an number</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Discount Price</mat-label>
-        <input matInput placeholder="write product sales price" formControlName="discountPrice">
+        <input matInput placeholder="write product sales price" formControlName="discountPrice" type="number">
         <mat-error *ngIf="productForm.get('discountPrice')?.errors?.['min']">Discount Price has to be above
             0</mat-error>
         <mat-error *ngIf="productForm.get('discountPrice')?.errors?.['pattern']">Discount Price has to be an

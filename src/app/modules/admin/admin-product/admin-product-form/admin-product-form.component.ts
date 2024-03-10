@@ -54,7 +54,10 @@ export class AdminProductFormComponent {
   }
 
   submit(){
-    console.log("selected Files", this.selectedFiles);
+    if (this.productForm.valid) {
+        const formData = this.createFormData();
+        this.productId ? this.updateProduct(this.productId, formData) : this.addProduct(formData);
+    }
   }
 
   onFileSelect(event: Event) {
@@ -100,4 +103,24 @@ export class AdminProductFormComponent {
       })
      })
   }
+
+  private createFormData(): FormData {
+    const formData = new FormData();
+    formData.append('productData', JSON.stringify(this.productForm.value));
+    if(this.selectedFiles.length){
+      this.selectedFiles.forEach((fileHandler) => {
+        formData.append(`images`, fileHandler.file);
+      });
+    }
+    return formData
+  }
+
+  private addProduct(formData: FormData): void {
+    this.adminProductFormService.saveProduct(formData).subscribe();
+  }
+
+  private updateProduct(id: number, formData: FormData): void {
+    this.adminProductFormService.updateProduct(id, formData).subscribe();
+  }
+  
 }
