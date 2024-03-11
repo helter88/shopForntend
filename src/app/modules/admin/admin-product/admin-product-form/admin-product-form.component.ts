@@ -7,6 +7,7 @@ import { AdminProduct, FileHandler, ImageDto } from './admin-forduct-form.model'
 import { base64ToBlob, processSelectedFileList } from './admin-product-form-util';
 import { AdminProductFormService } from './admin-product-form.service';
 import { FormCategoryService } from './form-category.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-admin-product-form',
@@ -29,6 +30,7 @@ export class AdminProductFormComponent {
     private sanitazier: DomSanitizer,
     private adminProductFormService: AdminProductFormService,
     private router: ActivatedRoute,
+    private location: Location
   ){}
 
   ngOnInit() {
@@ -40,7 +42,7 @@ export class AdminProductFormComponent {
       price: [0, [Validators.required, Validators.min(0), Validators.pattern("^[0-9]+(\\.[0-9]{1,2})?$")]],
       discountPrice: [null, [Validators.min(0.1), Validators.pattern("^[0-9]+(\\.[0-9]{1,2})?$")]],
       currency: ['PLN', Validators.required],
-      slug: ['', [Validators.minLength(2)]],
+      slug: ['', [Validators.required, Validators.minLength(2)]],
     })
     this.productId = Number(this.router.snapshot.params['id']);
     if(this.productId){
@@ -116,11 +118,11 @@ export class AdminProductFormComponent {
   }
 
   private addProduct(formData: FormData): void {
-    this.adminProductFormService.saveProduct(formData).subscribe();
+    this.adminProductFormService.saveProduct(formData).subscribe(() => this.location.back());
   }
 
   private updateProduct(id: number, formData: FormData): void {
-    this.adminProductFormService.updateProduct(id, formData).subscribe();
+    this.adminProductFormService.updateProduct(id, formData).subscribe(() => this.location.back());
   }
   
 }

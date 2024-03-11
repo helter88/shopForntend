@@ -16,11 +16,11 @@ export class AdminProductFormService {
     return this.http.get<AdminProduct>("api/admin/products/" + id);
   }
 
-  updateProduct(id:number, data: FormData): Observable<AdminProduct>{
-    return this.http.put<AdminProduct>("api/admin/products/" + id, data);
+  updateProduct(id:number, data: FormData){
+    return this.http.put("api/admin/products/" + id, data);
   }
 
-  saveProduct(data: FormData): Observable<AdminProduct>{
-    return this.http.post<AdminProduct>("api/admin/products", data);
+  saveProduct(data: FormData){
+    return this.http.post("api/admin/products", data);
   }
 }
