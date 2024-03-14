@@ -1,6 +1,6 @@
 <span class="font-extrabold text-3xl">Cut-price</span>
 <div *ngFor="let prod of data?.discountedProducts" class="border-b flex flex-row py-6 product-hover">
-  <div matTooltip="See product details">
+  <div matTooltip="See product details" matTooltipClass="tooltipBackgroundColor">
     <a routerLink="{{prod.slug}}">
       <img *ngIf="!prod.image" src="/assets/image-placeholder.png" class="object-scale-down h-44 w-64">
       <img *ngIf="prod.image" src="{{'/api/data/productImages/' + prod.image}}" class="object-scale-down h-44 w-64">
@@ -8,7 +8,7 @@
   </div>
   <div class="flex flex-col flex-1 justify-between">
     <a routerLink="{{prod.slug}}">
-      <div matTooltip="See product details" class="flex flex-col gap-2">
+      <div matTooltip="See product details" matTooltipClass="tooltipBackgroundColor" class="flex flex-col gap-2">
         <span class="font-semibold text-lg"><a class="hover:opacity-70 transition-colors duration-700" routerLink="{{prod.slug}}">{{prod.name}}</a></span>
         <span>{{prod.description}}</span>
       </div>
@@ -18,7 +18,7 @@
         [queryParams]="{productId: prod?.id}">Add to cart </button>
     </div>
   </div>
-  <a routerLink="{{prod.slug}}" class="flex flex-col mr-10 gap-1" matTooltip="See product details">
+  <a routerLink="{{prod.slug}}" class="flex flex-col mr-10 gap-1" matTooltip="See product details" matTooltipClass="tooltipBackgroundColor">
     <span *ngIf="prod.discountPrice" class="font-semibold">{{prod.discountPrice + " "+ prod.currency}}</span>
     <span [ngClass]="prod.discountPrice ? 'line-through': 'font-semibold'">{{prod.price + " "+ prod.currency}}</span>
   </a>

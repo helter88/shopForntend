@@ -1,3 +1,7 @@
 ::ng-deep .tooltipWarn {
     --mdc-plain-tooltip-container-color: #f44336 !important;
 }
+
+::ng-deep .tooltipBackgroundColor{
+    --mdc-plain-tooltip-container-color: #805ad5 !important;
+}

@@ -10,10 +10,11 @@
                 <div class="text-base">Management System</div>
             </div>
         </div>
-        <div class="hover:text-purple-500 transition-colors duration-500 text-lg cursor-pointer mr-6"
-            matTooltip="Log out" matTooltipClass="tooltipBackgroundColor">
+        <button class="hover:text-purple-500 transition-colors duration-500 text-lg cursor-pointer mr-6"
+            matTooltip="Log out" matTooltipClass="tooltipBackgroundColor"
+            (click)="logout()">
             <mat-icon>logout</mat-icon>
-        </div>
+        </button>
     </header>
     <div class=" flex-1 flex flex-row">
         <div class="w-1/5 p-5 shadow-lg flex flex-col mt-14 min-w-44">
@@ -24,8 +25,7 @@
                     class="transition-colors duration-700 w-40 py-4 border border-transparent hover:border-purple-700">Categories</button>
                 <button routerLink="admin/orders" routerLinkActive="border-purple-700 bg-purple-700 text-white"
                     class="transition-colors duration-700 w-40 py-4 border border-transparent hover:border-purple-700">Orders</button>
-                <button routerLink="admin/statistics"
-                    routerLinkActive="border-purple-700 bg-purple-700 text-white"
+                <button routerLink="admin/statistics" routerLinkActive="border-purple-700 bg-purple-700 text-white"
                     class="transition-colors duration-700 w-40 py-4 border border-transparent hover:border-purple-700">Statistics</button>
             </div>
         </div>

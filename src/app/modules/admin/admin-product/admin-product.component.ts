@@ -42,8 +42,9 @@ export class AdminProductComponent implements AfterViewInit {
       .subscribe(res =>{
         if(res){
           this.adminProductService.deleteProduct(id)
-          .subscribe(() => {
-            this.products =this.products.filter(prod => prod.id !== id);
+          .subscribe({
+            next: () => this.products =this.products.filter(prod => prod.id !== id),
+            error: (err) => alert("Can't delete product because of existing element in cart")
           })
         }
       })

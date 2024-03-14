@@ -1,25 +1,30 @@
 <h1>Orders export </h1>
 <form [formGroup]="formGroup" class="flex justify-around items-center" (submit)="export()">
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
         <mat-label>From</mat-label>
         <input matInput placeholder="Select date from" formControlName="from" [matDatepicker]="from">
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
         <mat-datepicker #from></mat-datepicker>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
         <mat-label>Do</mat-label>
         <input matInput placeholder="Select date to" formControlName="to" [matDatepicker]="to">
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
         <mat-datepicker #to></mat-datepicker>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
         <mat-label>Status</mat-label>
         <mat-select formControlName="orderStatus">
             <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
         </mat-select>
     </mat-form-field>
     
-    <button class="button-blue" [disabled]="!formGroup.valid">Export</button>
+    <button
+        class="border-purple-700 bg-purple-700 text-white rounded-full w-10 h-10 mb-6 flex flex-row items-center justify-center cursor-pointer  disabled:bg-slate-200 disabled:text-slate-500 disabled:cursor-not-allowed "
+        matTooltip="Export selected range to CSV" matTooltipClass="tooltipBackgroundColor"
+        [disabled]="!formGroup.valid">
+        <mat-icon>cloud_download</mat-icon>
+    </button>
 </form>

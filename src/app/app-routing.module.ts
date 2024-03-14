@@ -12,8 +12,7 @@ import { AdminOrderExportComponent } from './modules/admin/admin-order/admin-ord
 import { AdminOrderListComponent } from './modules/admin/admin-order/admin-order-list/admin-order-list.component';
 import { AdminOrderStatisticsComponent } from './modules/admin/admin-order/admin-order-statistics/admin-order-statistics.component';
 import { AdminOrderUpdateComponent } from './modules/admin/admin-order/admin-order-update/admin-order-update.component';
-import { AdminProductUpdateComponent } from './modules/admin/admin-product-update/admin-product-update.component';
-import { AdminProductAddComponent } from './modules/admin/admin-product/admin-product-add/admin-product-add.component';
+import { AdminProductFormComponent } from './modules/admin/admin-product/admin-product-form/admin-product-form.component';
 import { AdminProductComponent } from './modules/admin/admin-product/admin-product.component';
 import { AdminComponent } from './modules/admin/admin.component';
 import { CartComponent } from './modules/cart/cart.component';
@@ -23,10 +22,9 @@ import { LoginComponent } from './modules/login/login.component';
 import { OrderComponent } from './modules/order/order.component';
 import { ProductDetailsComponent } from './modules/product-details/product-details.component';
 import { ProductComponent } from './modules/product/product.component';
-import { adminAuthorizedGuard } from './shared/guard/adminAuthorizeGuard';
 import { ProfileComponent } from './modules/profile/profile.component';
 import { RegisterComponent } from './modules/register/register.component';
-import { AdminProductFormComponent } from './modules/admin/admin-product/admin-product-form/admin-product-form.component';
+import { adminAuthorizedGuard } from './shared/guard/adminAuthorizeGuard';
 
 const routes: Routes = [
 {
@@ -54,7 +52,7 @@ const routes: Routes = [
 }, {
   path: '', component: FullpageadminComponent, canActivateChild: [adminAuthorizedGuard],
   children: [{
-    path: 'admin', component: AdminComponent
+    path: 'admin', redirectTo: 'admin/products'
   }, {
     path: 'admin/products', component: AdminProductComponent,
   }, {

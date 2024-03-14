@@ -40,7 +40,7 @@ export class AdminLoginComponent implements OnInit {
               this.jwtService.setAminAccess(true);
             }
             
-            this.router.navigate(["/admin"]);
+            this.router.navigate(["/admin/products"]);
           },
           error: () => this.loginError = true
         })

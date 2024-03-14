@@ -10,7 +10,7 @@ import { AdminConfirmationDialogService } from '../admin-confirmation-dialog.ser
 })
 export class AdminCategoryComponent {
 
-  displayedColumns: string[] = ["id", "name", "actions"];
+  displayedColumns: string[] = ["id", "name", "edit", "delete"];
   totalElements: number = 0;
   categories: AdminCategory[]  = [];
 

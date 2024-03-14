@@ -1,23 +1,26 @@
-<form class="flex flex-col" [formGroup] ="parentForm" (submit)="submit()">
-    <mat-form-field>
+<form class="flex flex-col w-1/3 mx-auto" [formGroup] ="parentForm" (submit)="submit()">
+    <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
         <input matInput placeholder="write product name" formControlName="name">
         <mat-error *ngIf="parentForm.get('name')?.errors?.['required']">Name is required</mat-error>
         <mat-error *ngIf="parentForm.get('name')?.errors?.['minlength']">Name has to be at least 2 characters long</mat-error>
     </mat-form-field>
-    <mat-form-field>
+
+    <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
         <input matInput placeholder="write description" formControlName="description">
     </mat-form-field>
-    <mat-form-field>
+
+    <mat-form-field appearance="outline">
         <mat-label>Slug</mat-label>
         <input matInput placeholder="write slug" formControlName="slug">
         <mat-error *ngIf="parentForm.get('slug')?.errors?.['required']">Slug is required</mat-error>
         <mat-error *ngIf="parentForm.get('slug')?.errors?.['minlength']">Slug has to be at least 2 characters long</mat-error>
     </mat-form-field>
    
-    <div class="self-end">
-        <button class="button-blue" 
+    <div class="flex flex-row justify-center">
+        <button 
+        class="border-purple-700 bg-purple-700 text-white w-56 h-14 flex flex-row items-center justify-center mt-6 cursor-pointer disabled:bg-slate-200 disabled:text-slate-500 disabled:cursor-not-allowed"
         [disabled]="!parentForm.valid">Save</button>
     </div>
 </form>
