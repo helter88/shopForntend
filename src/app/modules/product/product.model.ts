@@ -8,7 +8,7 @@ export interface Product {
     price: number; 
     discountPrice: number;
     currency: string;
-    image: string;
+    image: ProductImages;
     slug: string;
 }
 
@@ -20,7 +20,18 @@ export interface ProductDetails {
     price: number;
     discountPrice: number;
     currency: string;
-    image: string;
     slug: string;
     reviews: Review[];
+    productImages: ProductImages[];
+}
+
+export interface ProductImages {
+    id: number;
+    image: ImageDto;
+}
+export interface ImageDto {
+    id: number;
+    filename: string;
+    filetype: string;
+    image: string;
 }

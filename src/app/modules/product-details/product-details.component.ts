@@ -4,6 +4,7 @@ import { ProductDetailsService } from './product-details.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -15,12 +16,14 @@ export class ProductDetailsComponent {
 
   product!: ProductDetails;
   reviewForm!: FormGroup;
-
+  images: SafeResourceUrl[] = [];
+  
   constructor(
     private productDetailsService: ProductDetailsService,
     private router: ActivatedRoute,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
+    private sanitizer: DomSanitizer
   ){}
 
   ngOnInit(){
@@ -34,7 +37,10 @@ export class ProductDetailsComponent {
   getProductDetails(){
     const slug = this.router.snapshot.params['slug'];
     this.productDetailsService.getProductDetails(slug)
-      .subscribe(prod => this.product = prod);
+      .subscribe(prod => {
+        this.product = prod;
+        this.images = prod.productImages.map(item =>this.sanitizer.bypassSecurityTrustResourceUrl(`data:${item.image.filetype};base64, ${item.image.image}`));
+      });
   }
 
   submit(){

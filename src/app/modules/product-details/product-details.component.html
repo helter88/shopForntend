@@ -1,11 +1,20 @@
 <div class="flex flex-col mt-8">
     <div class="flex flex-row">
-        <div class="w-1/2 max-h-80">
-            <swiper-container navigation="true" pagination="true" pagination-clickable="true">
-                <swiper-slide class="flex flex-row justify-center"><img *ngIf="!product?.image"
-                        src="/assets/image-placeholder.png" class="object-scale-down max-h-80"></swiper-slide>
-                <swiper-slide>Slide 2</swiper-slide>
-                <swiper-slide>Slide 3</swiper-slide>
+        <div class="w-1/2 max-h-90">
+            <swiper-container *ngIf="images.length > 0" navigation="true" pagination="true" pagination-clickable="true">
+                <swiper-slide *ngFor="let image of images">
+                    <div class="flex flex-row justify-center items-center w-full">
+                        <img class="object-scale-down max-h-80" [src]="image" alt="{{ product.name }}">
+                    </div>
+                </swiper-slide>
+            </swiper-container>
+            <swiper-container *ngIf="images.length === 0" navigation="true" pagination="true"
+                pagination-clickable="true">
+                <swiper-slide>
+                    <div class="flex flex-row justify-center items-center w-full">
+                        <img src="/assets/image-placeholder.png" class="object-scale-down max-h-80">
+                    </div>
+                </swiper-slide>
             </swiper-container>
         </div>
         <div class="flex flex-col justify-between mb-4 pl-12">
@@ -27,7 +36,7 @@
 
         </div>
     </div>
-    <div class="mt-8">
+    <div class="mt-8 max-w-4xl">
         <h2>Add review:</h2>
         <form [formGroup]="reviewForm" (submit)="submit()" class="flex flex-col gap-4">
             <mat-form-field appearance="outline">

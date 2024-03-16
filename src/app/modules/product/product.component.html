@@ -3,7 +3,8 @@
   <div matTooltip="See product details" matTooltipClass="tooltipBackgroundColor">
     <a routerLink="{{prod.slug}}">
       <img *ngIf="!prod.image" src="/assets/image-placeholder.png" class="object-scale-down h-44 w-64">
-      <img *ngIf="prod.image" src="{{'/api/data/productImages/' + prod.image}}" class="object-scale-down h-44 w-64">
+      <img *ngIf="prod.image" [src]="'data:' + prod.image.image.filetype + ';base64,' + prod.image.image.image"
+      class="object-scale-down h-44 w-64">
     </a>
   </div>
   <div class="flex flex-col flex-1 justify-between">
