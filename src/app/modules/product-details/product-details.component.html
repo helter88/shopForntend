@@ -1,55 +1,57 @@
-<div class="flex flex-col">
+<div class="flex flex-col mt-8">
     <div class="flex flex-row">
-        <div>
-            <img *ngIf="!product?.image" src="/assets/image-placeholder.png" width="350">
-            <img *ngIf="product?.image" src="{{'/api/data/productImages/' + product.image}}" width="350">
+        <div class="w-1/2 max-h-80">
+            <swiper-container navigation="true" pagination="true" pagination-clickable="true">
+                <swiper-slide class="flex flex-row justify-center"><img *ngIf="!product?.image"
+                        src="/assets/image-placeholder.png" class="object-scale-down max-h-80"></swiper-slide>
+                <swiper-slide>Slide 2</swiper-slide>
+                <swiper-slide>Slide 3</swiper-slide>
+            </swiper-container>
         </div>
-        <div class="flex flex-col w-full">
-            <h1>{{product?.name}}</h1>
-            <small>{{product?.category}}</small>
-            <div class="description">
-                {{product?.description}}
+        <div class="flex flex-col justify-between mb-4 pl-12">
+            <div class="flex flex-col gap-4">
+                <h1>{{product?.name}}</h1>
+                <small>{{product?.category}}</small>
+                <div>
+                    {{product?.description}}
+                </div>
+                <div class="flex flex-row gap-4 mb-6">
+                    <div *ngIf="product?.discountPrice" class="font-semibold">{{product?.discountPrice}}PLN</div>
+                    <div [ngClass]="product?.discountPrice? 'line-through': 'font-semibold'">{{product?.price}}PLN</div>
+                </div>
             </div>
-            <span class="self-end">{{product?.price}}</span>
-            <span class="self-end" *ngIf="product?.discountPrice">{{product?.discountPrice}}</span>
-            <button class="bg-red-400 hover:bg-red-700 text-white py-2 px-4 rounded-full"
-              routerLink="/cart" [queryParams]="{productId: product?.id}">Add to cart</button>             
+            <div>
+                <button mat-flat-button color="warn" class="!w-48 !py-6" routerLink="/cart"
+                    [queryParams]="{productId: product?.id}">Add to cart</button>
+            </div>
+
         </div>
     </div>
-    <div>
-        <h2>Your review</h2>
-        <form [formGroup]="reviewForm" (submit)="submit()" class="flex flex-col">
-            <mat-form-field appearance="fill">
+    <div class="mt-8">
+        <h2>Add review:</h2>
+        <form [formGroup]="reviewForm" (submit)="submit()" class="flex flex-col gap-4">
+            <mat-form-field appearance="outline">
                 <mat-label>Author</mat-label>
                 <input matInput placeholder="your name" formControlName="authorName">
-                <div *ngIf="authorName?.invalid && (authorName?.dirty || authorName?.touched)" class="errorMessage">
-                  <div *ngIf="authorName?.errors?.['required']">
-                    Name is required
-                  </div>
-                  <div *ngIf="authorName?.errors?.['minlength']">
-                    Name has to contain min 2 signs
-                  </div>
-                </div>
+                <mat-error *ngIf="authorName?.errors?.['required']">Name is required</mat-error>
+                <mat-error *ngIf="authorName?.errors?.['minlength']">Name has to contain min 2 signs</mat-error>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
                 <mat-label>Your opinion</mat-label>
                 <textarea matInput rows="10" placeholder="Twoja opinia" formControlName="content"></textarea>
-                <div *ngIf="content?.invalid && (content?.dirty || content?.touched)" class="errorMessage">
-                  <div *ngIf="content?.errors?.['required']">
-                    Opinion is reqired
-                  </div>
-                  <div *ngIf="content?.errors?.['minlength']">
-                    Opinion has to contain min 4 signs
-                  </div>
-                </div>
+                <mat-error *ngIf="content?.errors?.['required']">Opinion is reqired</mat-error>
+                <mat-error *ngIf="content?.errors?.['minlength']">Opinion has to contain min 4 signs</mat-error>
             </mat-form-field>
-            <div class="flex flex-col align-bottom gap-2">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-full" [disabled]="!reviewForm.valid">Save</button>
+            <div class="self-center">
+                <button mat-flat-button color="primary" [disabled]="!reviewForm.valid" class="!w-48 !py-6">Save</button>
             </div>
         </form>
-        <h2>All reviews:</h2>
+        <div class="mt-8">
+            <h2>All reviews:</h2>
+        </div>
+
         <div>
-            <div *ngFor="let review of product?.reviews" class="bg-slate-200 p-3 mb-3">
+            <div *ngFor="let review of product?.reviews" class="bg-purple-100 p-3 mb-3">
                 <h4>Author: {{review.authorName}}</h4>
                 <p>{{review.content}}</p>
 

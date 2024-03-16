@@ -11,9 +11,10 @@ import { CartComponent } from 'src/app/modules/cart/cart.component';
 import { OrderComponent } from 'src/app/modules/order/order.component';
 import { ReplacePipe } from 'src/app/shared/pipes/replacePipe';
 import { ProfileComponent } from 'src/app/modules/profile/profile.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { register } from 'swiper/element/bundle';
 
-
-
+register();
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -30,6 +31,7 @@ import { ProfileComponent } from 'src/app/modules/profile/profile.component';
     RouterModule,
     SharedModule,
     ReactiveFormsModule
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class DefaultModule { }

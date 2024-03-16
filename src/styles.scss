@@ -33,3 +33,9 @@ $my-theme: mat.define-light-theme((
 {
   border-right: none;
 }
+:root{
+  --swiper-theme-color: rgb(126 34 206);
+  --swiper-pagination-color: var(--swiper-theme-color);
+  --swiper-navigation-color: var(--swiper-theme-color);
+
+}

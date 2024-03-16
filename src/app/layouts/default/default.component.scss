@@ -1,0 +1,7 @@
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
+:host {
+    --swiper-theme-color: #9b1e3e;
+}
