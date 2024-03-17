@@ -35,7 +35,9 @@ const routes: Routes = [
   }, {
     path: 'products/:slug', component: ProductDetailsComponent
   }, {
-    path: 'categories/:slug', component: CategoryComponent
+    path: 'categories/:catSlug', component: CategoryComponent
+  }, {
+    path: 'categories/:catSlug/:slug', component: ProductDetailsComponent
   }, {
     path: 'cart', component: CartComponent
   }, {

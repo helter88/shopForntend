@@ -33,7 +33,7 @@ export class CategoryComponent {
   }
 
   getCategoriesWithProducts(page: number, size: number) {
-    this.categoryService.getProductsByCategory(this.route.snapshot.params['slug'], page, size)
+    this.categoryService.getProductsByCategory(this.route.snapshot.params['catSlug'], page, size)
       .subscribe(cat => {
         this.categoryProducts = cat;
         this.totalElements = cat.products.totalElements;
