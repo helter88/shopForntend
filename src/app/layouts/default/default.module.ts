@@ -13,6 +13,7 @@ import { ReplacePipe } from 'src/app/shared/pipes/replacePipe';
 import { ProfileComponent } from 'src/app/modules/profile/profile.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { register } from 'swiper/element/bundle';
+import { ProductSearchComponent } from 'src/app/modules/product-search/product-search.component';
 
 register();
 @NgModule({
@@ -21,6 +22,7 @@ register();
     HomeComponent,
     ProductComponent,
     ProductDetailsComponent,
+    ProductSearchComponent,
     CartComponent,
     OrderComponent,
     ReplacePipe,

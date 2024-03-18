@@ -5,11 +5,13 @@
   <form class="self-center ml-4 mr-6 w-3/4">
     <div class="flex items-center border border-solid border-slate-700 p-3 rounded-full focus-within:outline-none">
       <mat-icon class="text-slate-700 mr-2">search</mat-icon>
-      <input type="text" placeholder="Search for a product" [formControl]="control" [matAutocomplete]="auto"
+      <input type="text" placeholder="Search for a product" #trigger="matAutocompleteTrigger"
+        [formControl]="control" [matAutocomplete]="auto" (keydown.enter)="$event.preventDefault(); onEnterPressed()"
         class="bg-transparent w-full focus:outline-none">
     </div>
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let product of filteredStreets | async" [value]="product">
+      <mat-option *ngFor="let product of filteredProducts | async" [value]="product"
+        (onSelectionChange)="onProductSelected(product)">
         {{ product }}
       </mat-option>
     </mat-autocomplete>

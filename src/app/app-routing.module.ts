@@ -25,6 +25,7 @@ import { ProductComponent } from './modules/product/product.component';
 import { ProfileComponent } from './modules/profile/profile.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { adminAuthorizedGuard } from './shared/guard/adminAuthorizeGuard';
+import { ProductSearchComponent } from './modules/product-search/product-search.component';
 
 const routes: Routes = [
 {
@@ -32,6 +33,8 @@ const routes: Routes = [
     path: '', component: HomeComponent
   }, {
     path: 'products', component: ProductComponent
+  }, {
+    path: 'products/search', component: ProductSearchComponent
   }, {
     path: 'products/:slug', component: ProductDetailsComponent
   }, {

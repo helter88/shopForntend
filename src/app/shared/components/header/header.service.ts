@@ -12,4 +12,8 @@ export class HeaderService {
   getCountProducts(cartId: number): Observable<number>{
     return this.http.get<number>("api/cartItems/count/" + cartId)
   }
+
+  searchProducts(query: string): Observable<string[]> {
+    return this.http.get<string[]>(`api/products/prompt?query=${query}`);
+  }
 }
