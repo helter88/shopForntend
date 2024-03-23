@@ -1,16 +1,18 @@
 <div class="flex flex-row justify-between">
-  <h1>Order</h1> 
-  <p *ngIf="!isLoggedin"><a class="font-bold underline" routerLink="/login">Login</a> to see your orders</p> 
+    <h1>Order</h1>
+    <p *ngIf="!isLoggedin"><a class="font-bold underline" routerLink="/login">Login</a> to see your orders</p>
 </div>
 
 
-<div *ngIf="orderSummary">
+<div class="flex flex-col gap-4"  *ngIf="orderSummary">
     <div>Order number: {{orderSummary.id}}</div>
     <div>Date: {{orderSummary.placeDate | date: 'yyyy-MM-dd HH:mm'}}</div>
     <div>Status: {{orderSummary.status}}</div>
     <div>Value: {{orderSummary.grossValue}}</div>
-    <div *ngIf="orderSummary.payment.note">Payment: <br><span [innerHTML]="orderSummary.payment.note | replce: '\n': '\<br>'"></span></div>
-    <div *ngIf="isLoggedin"> You can follow your order status on your <a class="font-bold underline" routerLink="/profile">profile page</a>. </div>
+    <div *ngIf="orderSummary.payment.note">Payment: <br><span
+            [innerHTML]="orderSummary.payment.note | replce: '\n': '\<br>'"></span></div>
+    <div *ngIf="isLoggedin"> You can follow your order status on your <a class="font-bold underline"
+            routerLink="/profile">profile page</a>. </div>
 </div>
 
 <div *ngIf="!orderSummary && cartSummary && cartSummary.items.length <= 0">
@@ -19,43 +21,43 @@
 
 <div *ngIf="!orderSummary && cartSummary && cartSummary.items.length >= 0">
     <form [formGroup]="formGroup" (submit)="submit()">
-        <div class="flex flex-col gap-2">
-            <mat-form-field appearance="fill">
+        <div class="flex flex-col w-1/2 mx-auto gap-2">
+            <mat-form-field appearance="outline">
                 <mat-label>First Name</mat-label>
                 <input matInput placeholder="Write your First Name" formControlName="firstname">
                 <mat-error *ngIf="firstname?.errors?.['required']">
                     Name is required
                 </mat-error>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
                 <mat-label>Last Name</mat-label>
                 <input matInput placeholder="Write your Last Name" formControlName="lastname">
                 <mat-error *ngIf="lastname?.errors?.['required']">
                     Surname is required
                 </mat-error>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
                 <mat-label>Street</mat-label>
                 <input matInput placeholder="Write your street" formControlName="street">
                 <mat-error *ngIf="street?.errors?.['required']">
                     Street is required
                 </mat-error>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
                 <mat-label>Zipcode</mat-label>
                 <input matInput placeholder="Write your zipcode" formControlName="zipcode">
                 <mat-error *ngIf="zipcode?.errors?.['required']">
                     Zip code is required
                 </mat-error>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
                 <mat-label>City</mat-label>
                 <input matInput placeholder="Write your city" formControlName="city">
                 <mat-error *ngIf="city?.errors?.['required']">
                     City is required
                 </mat-error>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
                 <mat-label>Email</mat-label>
                 <input type="email" matInput placeholder="Write your email address" formControlName="email">
                 <mat-error *ngIf="email?.errors?.['required']">
@@ -65,7 +67,7 @@
                     Invalid email format
                 </mat-error>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
                 <mat-label>Phone</mat-label>
                 <input matInput placeholder="Write phone number" formControlName="phone">
                 <mat-error *ngIf="phone?.errors?.['required']">
@@ -73,38 +75,40 @@
                 </mat-error>
             </mat-form-field>
         </div>
-        <div>
+        <div class="mt-6 w max-w-5xl flex flex-col">
             <h2>Your order: </h2>
-            <div class="flex flex-row justify-between items-start" >
-                <div class="cart-hcol-1">Image</div>
-                <div class="cart-hcol-2">Name</div>
-                <div class="cart-hcol-3">Quantity</div>
-                <div class="cart-hcol-4">Value</div>
-                <div class="cart-hcol-4"></div>
+            <div class="flex flex-row justify-between items-center mb-3 border-b py-2">
+                <div class="w-32 text-center">Image</div>
+                <div class="w-32 text-center">Name</div>
+                <div class="w-32 text-center">Quantity</div>
+                <div class="w-32 text-center">Value</div>
             </div>
             <div>
                 <div *ngFor="let item of cartSummary.items; let i = index">
-                    <div class="flex flex-row justify-between items-start">
-                        <div class="cart-col-1">
+                    <div class="flex flex-row justify-between items-center py-2 border-b">
+                        <div class="w-32 text-center">
                             <a routerLink="{{'/products/' + item?.product?.slug}}">
-                                <img *ngIf="!item?.product?.image" src="/assets/image-placeholder.png" width="100">
-                                <img *ngIf="item?.product?.image" src="{{'/api/data/productImages/' + item?.product?.image}}" width="100">
+                                <img *ngIf="!item?.product?.image" src="/assets/image-placeholder.png"
+                                    class="object-scale-down w-full h-24">
+                                <img *ngIf="item?.product?.image"
+                                    [src]="'data:' + item?.product?.image?.image?.filetype + ';base64,' + item?.product?.image?.image?.image"
+                                    class="object-scale-down w-full h-24">
                             </a>
                         </div>
-                        <div class="cart-col-2">{{item?.product?.name}}</div>
-                        <div class="cart-col-3">{{item?.quantity}}</div>
-                        <div class="cart-col-4">{{item?.lineValue}}</div>
+                        <div class="w-32 text-center">{{item?.product?.name}}</div>
+                        <div class="w-32 text-center">{{item?.quantity}}</div>
+                        <div class="w-32 text-center">{{item?.lineValue}}</div>
                     </div>
                 </div>
             </div>
-            <div class="flex justify-end items-start">
+            <div class="flex justify-end mt-6 gap-2">
                 <div>Value:</div>
-                <div>{{cartSummary?.summary?.grossValue}} PLN</div>
+                <div><b>{{cartSummary?.summary?.grossValue}} PLN</b></div>
             </div>
             <div>
                 <h2>Delivery:</h2>
                 <mat-radio-group class="flex flex-col" formControlName="shipment">
-                    <mat-radio-button *ngFor="let shipment of initData?.shipments" [value]="shipment"
+                    <mat-radio-button color="primary" *ngFor="let shipment of initData?.shipments" [value]="shipment"
                         [checked]="shipment.defaultShipment">
                         <span class="mr-3">{{shipment.name}}</span>
                         <span>{{shipment.price}} PLN</span>
@@ -114,25 +118,26 @@
             <div>
                 <h2>Payment:</h2>
                 <mat-radio-group class="flex flex-col" formControlName="payment">
-                    <mat-radio-button *ngFor="let payment of initData?.payments" [value]="payment"
+                    <mat-radio-button color="primary" *ngFor="let payment of initData?.payments" [value]="payment"
                         [checked]="payment.defaultPayment">
                         <span class="mr-3">{{payment.name}}</span>
                     </mat-radio-button>
                 </mat-radio-group>
             </div>
         </div>
-        <div class="justify-end">
+        <div class="flex justify-end my-6 gap-2">
             <div>
-                Total value to pay: {{cartSummary?.summary?.grossValue + shipment?.value.price}} PLN
+               <b>Total value to pay: {{cartSummary?.summary?.grossValue + shipment?.value.price}} PLN</b> 
             </div>
         </div>
-        <div class="flex justify-end items-start">
+        <div class="flex justify-end">
             <mat-error *ngIf="errorMessage">
                 Something goes wrong. Please try again later.
             </mat-error>
         </div>
-        <div class="flex justify-end items-start">
-            <button class="button-blue" >Order and payment</button>
+        <div class="flex justify-end mb-6">
+            <button mat-flat-button color="warn" class="!w-48 !py-6"
+                [disabled]="!formGroup.valid">Order and payment</button>
         </div>
     </form>
 </div>

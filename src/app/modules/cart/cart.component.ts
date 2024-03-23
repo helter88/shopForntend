@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CartService } from './cart.service';
-import { CartSummary, CartSummaryItem } from './cart-summary.model';
-import { CookieService } from 'ngx-cookie-service';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { CartIconService } from 'src/app/shared/services/cart-icon.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { CartCommonService } from 'src/app/shared/services/cart-common.service';
+import { CartIconService } from 'src/app/shared/services/cart-icon.service';
+import { CartSummary, CartSummaryItem } from './cart-summary.model';
+import { CartService } from './cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -35,6 +35,8 @@ export class CartComponent {
     this.formGroup = this.formBuilder.group({
       items: this.formBuilder.array([])
     })
+
+
   }
   getCart(){
     const cartId = Number(this.cookieService.get("cartId"));

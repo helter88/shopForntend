@@ -1,3 +1,5 @@
+import { ProductImages } from "../product/product.model";
+
 export interface CartSummary {
     id: number;
     items: CartSummaryItem[]; 
@@ -9,7 +11,7 @@ export interface Product {
     name: string;
     price: number;
     currency: string;
-    image: string;
+    image: ProductImages;
     slug: string;
 }
 
