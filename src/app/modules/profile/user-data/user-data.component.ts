@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfileService } from '../profile.service';
 import { JwtService } from 'src/app/shared/services/jwt.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-data',
@@ -17,7 +18,8 @@ export class UserDataComponent {
     private formBuilder: FormBuilder,
     private profileService: ProfileService,
     private jwtService: JwtService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar,
   ){}
 
   ngOnInit(){
@@ -46,7 +48,17 @@ export class UserDataComponent {
     })
   }
 
-  submit(){}
+  submit(){
+    if(this.formGroup.valid){
+      this.profileService.saveUserData(this.formGroup.value)
+      .subscribe({
+        next : () => {
+          this.snackBar.open("Data saved",'', {duration: 2600, panelClass: "successful"});
+        },
+        error: err => this.snackBar.open(`Data not saved: ${err.error}`,'', {duration: 2600, panelClass: "fail"})
+      })
+    }
+  }
   
   get firstname(){
     return this.formGroup.get("firstname");

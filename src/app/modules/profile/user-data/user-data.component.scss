@@ -1,0 +1,9 @@
+::ng-deep.successful {
+    --mdc-snackbar-container-color: #4CAF50;
+    --mdc-snackbar-supporting-text-color: white;
+  }
+
+::ng-deep.fail {
+    --mdc-snackbar-container-color: #f44336;
+    --mdc-snackbar-supporting-text-color: white;
+  }

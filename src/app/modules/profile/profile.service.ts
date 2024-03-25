@@ -19,4 +19,8 @@ export class ProfileService {
   getUserData(): Observable<UserData>{
     return this.http.get<UserData>("/api/userData");
   }
+
+  saveUserData(userData: UserData){
+    return this.http.post("/api/userData", userData);
+  }
 }
