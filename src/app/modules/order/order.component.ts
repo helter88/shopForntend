@@ -7,6 +7,7 @@ import { OrderService } from './order.service';
 import { InitData, Order, OrderSummary } from './order.model';
 import { CartIconService } from 'src/app/shared/services/cart-icon.service';
 import { JwtService } from 'src/app/shared/services/jwt.service';
+import { ProfileService } from '../profile/profile.service';
 
 @Component({
   selector: 'app-order',
@@ -29,6 +30,7 @@ export class OrderComponent {
     private formBuilder: FormBuilder,
     private cartIconService: CartIconService,
     private jwtService: JwtService,
+    private profileService: ProfileService,
   ){}
 
   ngOnInit() {
@@ -43,6 +45,18 @@ export class OrderComponent {
       phone:['', Validators.required],
       shipment:['', Validators.required],
       payment: ['', Validators.required]
+    })
+
+    this.profileService.getUserData().subscribe( userData => {
+      this.formGroup.patchValue({
+        firstname: userData.firstname ?? '',
+        lastname: userData.lastname ?? '',
+        street: userData.street ?? '',
+        zipcode: userData.zipcode ?? '',
+        city: userData.city ?? '',
+        email: userData.email ?? '',
+        phone: userData.phone ?? '',
+      });
     })
 
     this.getInitData();
