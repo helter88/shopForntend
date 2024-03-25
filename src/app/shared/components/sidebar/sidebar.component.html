@@ -1,11 +1,22 @@
-<div class="flex flex-col items-center gap-1 mt-6">
+<div *ngIf="!isProfile" class="flex flex-col items-center gap-1 mt-6">
     <h2>Categories: </h2>
     <button [routerLink]="'/products'" routerLinkActive="border-purple-700 bg-purple-700 text-white"
         [routerLinkActiveOptions]="{exact: true}"
-    class="transition-colors duration-700 w-40 py-4 border border-transparent hover:border-purple-700">All Products</button>
+        class="transition-colors duration-700 w-40 py-4 border border-transparent hover:border-purple-700">All
+        Products</button>
     <ng-container *ngFor="let cat of categories">
         <button [routerLink]="'/categories/'+ cat.slug" routerLinkActive="border-purple-700 bg-purple-700 text-white"
-        class="transition-colors duration-700 w-40 py-4 border border-transparent hover:border-purple-700">{{cat.name}}</button>
-    </ng-container>  
+            class="transition-colors duration-700 w-40 py-4 border border-transparent hover:border-purple-700">{{cat.name}}</button>
+    </ng-container>
 </div>
 
+<div *ngIf="isProfile" class="flex flex-col items-center gap-1 mt-6">
+    <h2> </h2>
+    <button [routerLink]="'profile/orders'" routerLinkActive="border-purple-700 bg-purple-700 text-white"
+        class="transition-colors duration-700 w-40 py-4 border border-transparent hover:border-purple-700">Orders</button>
+    <button [routerLink]="'profile/userData'" routerLinkActive="border-purple-700 bg-purple-700 text-white"
+        class="transition-colors duration-700 w-40 py-4 border border-transparent hover:border-purple-700">Your
+        Data</button>
+    <button class="transition-colors duration-700 w-40 py-4 border border-transparent hover:border-purple-700">Log
+        Out</button>
+</div>

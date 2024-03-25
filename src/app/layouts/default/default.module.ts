@@ -14,6 +14,8 @@ import { ProfileComponent } from 'src/app/modules/profile/profile.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { ProductSearchComponent } from 'src/app/modules/product-search/product-search.component';
+import { OrdersComponent } from 'src/app/modules/profile/orders/orders.component';
+import { UserDataComponent } from 'src/app/modules/profile/user-data/user-data.component';
 
 register();
 @NgModule({
@@ -27,6 +29,8 @@ register();
     OrderComponent,
     ReplacePipe,
     ProfileComponent,
+    OrdersComponent,
+    UserDataComponent,
   ],
   imports: [
     CommonModule,

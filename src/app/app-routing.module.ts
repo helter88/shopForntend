@@ -14,18 +14,18 @@ import { AdminOrderStatisticsComponent } from './modules/admin/admin-order/admin
 import { AdminOrderUpdateComponent } from './modules/admin/admin-order/admin-order-update/admin-order-update.component';
 import { AdminProductFormComponent } from './modules/admin/admin-product/admin-product-form/admin-product-form.component';
 import { AdminProductComponent } from './modules/admin/admin-product/admin-product.component';
-import { AdminComponent } from './modules/admin/admin.component';
 import { CartComponent } from './modules/cart/cart.component';
 import { CategoryComponent } from './modules/category/category.component';
 import { HomeComponent } from './modules/home/home.component';
 import { LoginComponent } from './modules/login/login.component';
 import { OrderComponent } from './modules/order/order.component';
 import { ProductDetailsComponent } from './modules/product-details/product-details.component';
+import { ProductSearchComponent } from './modules/product-search/product-search.component';
 import { ProductComponent } from './modules/product/product.component';
-import { ProfileComponent } from './modules/profile/profile.component';
+import { OrdersComponent } from './modules/profile/orders/orders.component';
+import { UserDataComponent } from './modules/profile/user-data/user-data.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { adminAuthorizedGuard } from './shared/guard/adminAuthorizeGuard';
-import { ProductSearchComponent } from './modules/product-search/product-search.component';
 
 const routes: Routes = [
 {
@@ -46,7 +46,11 @@ const routes: Routes = [
   }, {
     path: 'order', component: OrderComponent 
   }, {
-    path: 'profile', component: ProfileComponent 
+    path: 'profile', redirectTo: 'profile/orders'
+  }, {
+    path: 'profile/orders', component: OrdersComponent 
+  }, {
+    path: 'profile/userData', component: UserDataComponent 
   }]
 }, {
   path: '', component: FullpageComponent, children: [{

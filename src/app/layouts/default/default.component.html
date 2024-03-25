@@ -1,13 +1,14 @@
-<div class="mx-auto h-full flex flex-col">
-    <app-header></app-header> 
-    <div class="flex-1 flex flex-row mx-32">
-        <div class="w-1/5 p-5">
-            <app-sidebar></app-sidebar>   
+<div class="mx-auto h-screen flex flex-col">
+    <app-header></app-header>
+    <div class="flex-1">
+        <div class="flex-1 flex flex-row mx-32">
+            <div class="w-1/5 p-5">
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="w-4/5 p-5">
+                <router-outlet></router-outlet>
+            </div>
         </div>
-        <div class="w-4/5 p-5">
-            <router-outlet></router-outlet>    
-        </div>  
-    </div>    
+    </div>
     <app-footer></app-footer>
 </div>
-
