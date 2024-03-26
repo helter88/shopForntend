@@ -8,6 +8,7 @@ import { base64ToBlob, processSelectedFileList } from './admin-product-form-util
 import { AdminProductFormService } from './admin-product-form.service';
 import { FormCategoryService } from './form-category.service';
 import { Location } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-admin-product-form',
@@ -24,13 +25,16 @@ export class AdminProductFormComponent {
   categories: AdminCategory[] = [];
   productId!: number | null;
 
+  loading = false;
+
   constructor(
     private catService: FormCategoryService,
     private formBuilder: FormBuilder,
     private sanitazier: DomSanitizer,
     private adminProductFormService: AdminProductFormService,
     private router: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private snackBar: MatSnackBar,
   ){}
 
   ngOnInit() {
@@ -57,8 +61,21 @@ export class AdminProductFormComponent {
 
   submit(){
     if (this.productForm.valid) {
+        this.loading = true;
         const formData = this.createFormData();
-        this.productId ? this.updateProduct(this.productId, formData) : this.addProduct(formData);
+        const request = this.productId ? 
+          this.updateProduct(this.productId, formData) : 
+          this.addProduct(formData);
+        request.subscribe({
+            next: () => {
+            this.loading = false;
+            this.location.back();
+            }, 
+            error: err => {
+            this.loading = false;
+            this.snackBar.open(`Data not saved: ${err.error}`,'', {duration: 2600, panelClass: "fail"})
+            }
+          });
     }
   }
 
@@ -117,12 +134,12 @@ export class AdminProductFormComponent {
     return formData
   }
 
-  private addProduct(formData: FormData): void {
-    this.adminProductFormService.saveProduct(formData).subscribe(() => this.location.back());
+  private addProduct(formData: FormData) {
+    return this.adminProductFormService.saveProduct(formData);
   }
 
-  private updateProduct(id: number, formData: FormData): void {
-    this.adminProductFormService.updateProduct(id, formData).subscribe(() => this.location.back());
+  private updateProduct(id: number, formData: FormData) {
+    return this.adminProductFormService.updateProduct(id, formData)
   }
   
 }

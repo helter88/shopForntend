@@ -1,3 +1,7 @@
+<div class="overlay" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+    <p class="mt-10 text-2xl text-purple-600">Saving product...</p>
+</div>
 <div class="mt-4 flex flex-row justify-center">
     <h1 *ngIf="!productId">New Product</h1>
     <h1 *ngIf="productId">Update Product</h1>

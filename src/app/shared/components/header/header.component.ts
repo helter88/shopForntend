@@ -36,7 +36,7 @@ export class HeaderComponent {
     this.getCountProducts();
     this.cartIconService.subject
       .subscribe(counter => this.cartProductCounter = counter && counter > 0 ? counter: null);
-    this.isLoggedIn = this.jwtService.isLoggedIn();
+    this.jwtService.isLoggedInUpdates.subscribe(bool => this.isLoggedIn = bool);
     this.filteredProducts = this.control.valueChanges.pipe(
       debounceTime(300),
       tap(query => {

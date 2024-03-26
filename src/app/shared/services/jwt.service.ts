@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
-import { jwtDecode } from "jwt-decode";;
+import { jwtDecode } from "jwt-decode";import { BehaviorSubject } from 'rxjs';
+;
 
 @Injectable({
   providedIn: 'root'
 })
 export class JwtService {
+
+  private isLoggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
+
+  isLoggedInUpdates = this.isLoggedInSubject.asObservable();
 
   adminAccess = false;
 
@@ -12,10 +17,12 @@ export class JwtService {
 
   setToken(token: string) {
     localStorage.setItem("token", token);
+    this.isLoggedInSubject.next(true);
   }
 
   removeToken() {
     localStorage.removeItem("token");
+    this.isLoggedInSubject.next(false);
   }
 
   getToken(): string | null {

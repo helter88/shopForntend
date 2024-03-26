@@ -14,6 +14,7 @@ import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule } from '@angular/m
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const materialComponents = [
   MatCardModule,
@@ -30,7 +31,8 @@ const materialComponents = [
   MatMomentDateModule,
   MatAutocompleteModule,
   MatTooltipModule,
-  MatButtonModule
+  MatButtonModule,
+  MatProgressSpinnerModule
 ]
 
 @NgModule({

@@ -39,7 +39,7 @@ export class OrderComponent {
       firstname:['', Validators.required],
       lastname:['', Validators.required],
       street:['', Validators.required],
-      zipcode:['', Validators.required],
+      zipcode:['', [Validators.required, Validators.maxLength(6)]],
       city:['', Validators.required],
       email:['', [Validators.required, Validators.email]],
       phone:['', Validators.required],
@@ -49,13 +49,13 @@ export class OrderComponent {
 
     this.profileService.getUserData().subscribe( userData => {
       this.formGroup.patchValue({
-        firstname: userData.firstname ?? '',
-        lastname: userData.lastname ?? '',
-        street: userData.street ?? '',
-        zipcode: userData.zipcode ?? '',
-        city: userData.city ?? '',
-        email: userData.email ?? '',
-        phone: userData.phone ?? '',
+        firstname: userData?.firstname ?? '',
+        lastname: userData?.lastname ?? '',
+        street: userData?.street ?? '',
+        zipcode: userData?.zipcode ?? '',
+        city: userData?.city ?? '',
+        email: userData?.email ?? '',
+        phone: userData?.phone ?? '',
       });
     })
 
@@ -69,6 +69,10 @@ export class OrderComponent {
       .subscribe(summary => {
         this.cartSummary = summary;
       });
+  }
+
+  isZipcodeTooLong() {
+    return this.zipcode?.value.length > 6;
   }
 
   submit(){

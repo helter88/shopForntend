@@ -17,6 +17,7 @@
     <button [routerLink]="'profile/userData'" routerLinkActive="border-purple-700 bg-purple-700 text-white"
         class="transition-colors duration-700 w-40 py-4 border border-transparent hover:border-purple-700">Your
         Data</button>
-    <button class="transition-colors duration-700 w-40 py-4 border border-transparent hover:border-purple-700">Log
+    <button class="transition-colors duration-700 w-40 py-4 border border-transparent hover:border-purple-700"
+        (click)="logOut()">Log
         Out</button>
 </div>

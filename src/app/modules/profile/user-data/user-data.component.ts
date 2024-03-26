@@ -30,20 +30,20 @@ export class UserDataComponent {
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
       street: ['', Validators.required],
-      zipcode: ['', Validators.required],
+      zipcode: ['', [Validators.required, Validators.maxLength(6)]],
       city: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
     });
     this.profileService.getUserData().subscribe( userData => {
       this.formGroup.patchValue({
-        firstname: userData.firstname ?? '',
-        lastname: userData.lastname ?? '',
-        street: userData.street ?? '',
-        zipcode: userData.zipcode ?? '',
-        city: userData.city ?? '',
-        email: userData.email ?? '',
-        phone: userData.phone ?? '',
+        firstname: userData?.firstname ?? '',
+        lastname: userData?.lastname ?? '',
+        street: userData?.street ?? '',
+        zipcode: userData?.zipcode ?? '',
+        city: userData?.city ?? '',
+        email: userData?.email ?? '',
+        phone: userData?.phone ?? '',
       });
     })
   }
@@ -58,6 +58,10 @@ export class UserDataComponent {
         error: err => this.snackBar.open(`Data not saved: ${err.error}`,'', {duration: 2600, panelClass: "fail"})
       })
     }
+  }
+
+  isZipcodeTooLong() {
+    return this.zipcode?.value.length > 6;
   }
   
   get firstname(){

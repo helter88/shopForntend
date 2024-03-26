@@ -49,6 +49,9 @@
                 <mat-error *ngIf="zipcode?.errors?.['required']">
                     Zip code is required
                 </mat-error>
+                <mat-error *ngIf="isZipcodeTooLong()">
+                    Zip code must be max 6 signs
+                </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>City</mat-label>
@@ -61,7 +64,7 @@
                 <mat-label>Email</mat-label>
                 <input type="email" matInput placeholder="Write your email address" formControlName="email">
                 <mat-error *ngIf="email?.errors?.['required']">
-                    Email jest wymagany
+                    Email is required
                 </mat-error>
                 <mat-error *ngIf="email?.errors?.['email']">
                     Invalid email format
