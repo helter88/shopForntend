@@ -1,4 +1,4 @@
-<span class="font-extrabold text-3xl">Cut-price</span>
+<span class="font-extrabold text-3xl">Cut-price products</span>
 <div *ngFor="let prod of data?.discountedProducts" class="border-b flex flex-row py-6 product-hover gap-10">
   <div matTooltip="See product details" matTooltipClass="tooltipBackgroundColor">
     <a routerLink="products/{{prod.slug}}">
