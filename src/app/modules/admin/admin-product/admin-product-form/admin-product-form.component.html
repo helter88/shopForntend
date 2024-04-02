@@ -15,6 +15,10 @@
             long</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput placeholder="write product description" formControlName="description"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
         <mat-label>custom url</mat-label>
         <input matInput placeholder="write custom url" formControlName="slug">
         <mat-error *ngIf="productForm.get('slug')?.errors?.['required']">Custom url is required</mat-error>
