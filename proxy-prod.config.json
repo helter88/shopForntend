@@ -1,0 +1,9 @@
+{
+    "/api": {
+        "target": "https://shopbackend-4.onrender.com",
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/api": ""
+        }
+    }
+}

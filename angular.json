@@ -67,7 +67,7 @@
           "configurations": {
             "production": {
               "browserTarget": "Shop:build:production",
-              "proxyConfig": "proxy.config.json"
+              "proxyConfig": "proxy-prod.config.json"
             },
             "development": {
               "browserTarget": "Shop:build:development",
