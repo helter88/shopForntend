@@ -1,6 +1,6 @@
 # ElecElite e-commerce electronics shop
 
-<img src="./readme_images/ElecElite-e-commerce.PNG" alt="project image">
+<img src="./readme_images/ElecElite-e-commerce.png" alt="ElecElite main">
 
 > See demo live [click here](https://elecelite.onrender.com/ "click to open link")
 Disclaimer: The app is hosted on free 
