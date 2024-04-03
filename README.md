@@ -1,27 +1,66 @@
-# Shop
+# ElecElite e-commerce electronics shop
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
+<img src="./readme_images/ElecElite-e-commerce.PNG" alt="project image">
 
-## Development server
+> See demo live [click here](https://elecelite.onrender.com/ "click to open link")
+Disclaimer: The app is hosted on free 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Description
 
-## Code scaffolding
+The web app contains two parts:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 1. Main part with shop for clients
 
-## Build
+- See all products 
+- See products by category
+- Serach products using search bar with autocomplete
+<img src="./readme_images/search.PNG" alt="search">
+- See product details
+<img src="./readme_images/product-detail.PNG" alt="product-detail">
+- Add comment to product
+- Add product to cart
+- See products in a cart
+<img src="./readme_images/cart.PNG" alt="cart">
+- Prepare an order
+- You can place an order incognito or by the user account
+- Log in for active users.
+    you can use existing user
+    email: user@user.com
+    password: user
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Log out from user account
+- Register for new users.
+<img src="./readme_images/register.PNG" alt="register">
+- A user account provides the ability to see all user orders and data, and user data are 
+automatically filled in during the order placement process
+<img src="./readme_images/user-profile.PNG" alt="user-profile">
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 2. Hidden part to manage shop
 
-## Running end-to-end tests
+> available only throught [https://elecelite.onrender.com/admin](https://elecelite.onrender.com/admin "link to shop manager")
+You have to login with data:
+email: admin
+password: test
+<img src="./readme_images/management.PNG" alt="management-system">
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Add / edit category
+- Add / edit product
+- Add / edit image to product with drag & drop option
+<img src="./readme_images/drag&drop.PNG" alt="drag&drop">
 
-## Further help
+- See all orders
+- Export orders to CSV
+- Change order status
+- See chart with statistics
+<img src="./readme_images/chart.PNG" alt="chart">
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Built using
+
+- Angular 15.1.1
+- Typescript 4.8.4
+- RxJS 7.5.7
+- Tailwind CSS
+- Angular Material 15.2.9
+- Swiper 11.0.7
+- [Backend API](https://github.com/helter88/shopBackend "click to visit Github repository with API")
